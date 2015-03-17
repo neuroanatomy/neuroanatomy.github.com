@@ -26,6 +26,8 @@ p,li {font-size:0.8em}
 	.col.sidespace {width:4em}
 }
 </style>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/html-sanitizer-minified.js"></script>
 </head>
 <body>
 <div class="row" style="width:100%;height:100%">
@@ -55,11 +57,36 @@ p,li {font-size:0.8em}
 		<a href="news.html">News</a>
 	</div>
 	
+	<!-- Start Content -->
+	
+	<div id="content">
+	</div>
+	
+	<!-- End Content -->
+	
 
 		
 <div style="position:fixed;bottom:1em;right:0;width:0.5em;height:2em;background-color:red"></div>
 </div>
 <div class="col sidespace"></div>
 </div>
+
+<script>
+var blog=$.get("http://siphonophore.org/blog.php", function(){
+	var i;
+	var decoded;
+	for(i=0;i<blog.responseJSON.length;i++) {
+		decoded=html_sanitize(blog.responseJSON[i].content,function(url){return url},function(id){return id});
+		$("#content").append([	"<div style='width:600px;margin-left:auto;margin-right:auto;margin-top:2rem'>",
+								"<large><strong>"+blog.responseJSON[i].date_gmt+"</strong></large>",
+								"<h2 class='blog'><a href='"+blog.responseJSON[i].link+"' rel='bookmark' title='Permanent Link to "+blog.responseJSON[i].date_gmt+"'>"+blog.responseJSON[i].title+"</a></h2>",
+								"<div style='background-color:#f8f8f8;padding:1rem'>",
+								decoded,
+								"</div>",
+								"</div>"].join("\n"));
+	}
+});
+
+</script>
 </body>
 </html>
