@@ -1,86 +1,74 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+
 <head>
-  <meta content="text/html; charset=ISO-8859-1"
- http-equiv="content-type">
-  <title>CoactivationMap</title>
-	<style>
-	body {color: rgb(0, 0, 0); background-color:#eee;}
-	table {color:#333;background-color: rgb(255, 255, 255);}	
-	</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<title>CoactivationMap by NAAT</title>
+
+<link rel="stylesheet" href="../css/app-style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+	.frame {
+	border:thin solid #ddd;
+	padding:0.5em;
+	box-shadow: 0 0.3em 0.3em 0 rgba(0, 0, 0, 0.5);
+	background-color:#f5f5f5;
+	}
+</style>
 </head>
 
-<body alink="#ff9900" link="#666666" vlink="#999999">
-<span style="font-family: helvetica cy,helvetica,arial,sans-serif;">
+<body>
+<div class="wrapper">
+	<header>
+		<div class="frame" style="display: inline-block">
+			<img src="image.jpg" style="width:300px" />
+		</div>
+		<br />
+		<br />
+		<h1>Coactivation Map of the Human Brain</h1>
+		<p>Data, command line tool and interactive viewer for the Human Brain Coactivation Map</p>
+		<p class="view"><a href="https://github.com/neuroanatomy/CoactivationMap.app">View the Project on GitHub <small>neuroanatomy/CoactivationMap.app</small></a></p>
+		<ul>
+			<li><a href="https://github.com/neuroanatomy/CoactivationMap.app/zipball/master">Download <strong>ZIP File</strong></a></li>
+			<li><a href="https://github.com/neuroanatomy/CoactivationMap.app/tarball/master">Download <strong>TAR Ball</strong></a></li>
+			<li><a href="https://github.com/neuroanatomy/CoactivationMap.app">View On <strong>GitHub</strong></a></li>
+		</ul>
+	</header>
 
-<br>
-<br>
+	<section>
+		<p>Understanding the structure of the interactions among different brain regions is fundamental to understand brain function. Coactivation Map lets you browse through a complete map of functional connections in the human brain derived by an automatic meta-analysis of more than 9,000 neuroimaging articles in the NeuroSynth database.
+		<p>Download the data, the application, click on the image, or use the left slides to select a seed voxel. Then, see which brain regions are frequently engaged together with the seed voxel by using the right slides, or simply clicking on the image.
+	
+		<h3><a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>First, download the data</h3>
+		<ul>
+			<li>Download the current release (cmap13) of the Brain Coactivation Map data from NITRC here.</li>
+			<li>Unzip the cmap13.zip file, open the Preferences pane, and point the brain coactivation map path to the uncompressed directory.</li>
+		</ul>
+	
+		<h3><a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started with the interactive viewer (Mac only)</h3>
+		<ul>
+			<li>You may have to configure your System Preferences to allow the execution of software downloaded without the Mac Store: Go to System Preferences > Security & Privacy > General, and check "Allow apps downloaded from: Anywhere".</li>
+			<li>Click and drag to select the seed region. The corresponding coactivation volume will be displayed and on the right, the top 100 MeSH tags that most closely match the coactivation map.</li>
+			<li>Click on the tags to display in brainspell the articles corresponding to that tag.</li>
+			<li>The "Sync" checkbox is selected by default, unchecking it will allow you to navigate the rest ov the coactivation volume without changing the position of the seed.</li>
+			<li>A False Discovery Rate (FDR) threshold can be computed using the FDR text field.</li>
+			<li>A list of the peak coordinates for the current coactivation map can be saved by clicking on the "Save Peaks" button.</li>
+		</ul>
+		<p>The CoactivationMap.app binary was compiled for Mac OS X 10.9 using Xcode 5.
+		<h3><a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using the command line tool for advanced functionality</h3>
+		<p>Alternatively, you can also query the Brain Coactivation Map data using our command tool cmtool.
+	
+		<h3><a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+		<p>Roberto Toro (<a href="https://github.com/r03ert0" class="user-mention">@r03ert0</a>)
+	</section>
 
-<table style="width: 600px; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="10" cellspacing="10">
-	<tbody>
-		<tr>
-			<td style="vertical-align: top;">
-				<!  arial rounded mt bold>
-					<div style="text-align: right;">
-						release 1
-						<br>
-						<big><big><big><big style="font-weight: bold;">Coactivation Map</big></big></big></big>
-						<br>
-						<!--
-							<a href="https://sourceforge.net/project/showfiles.php?group_id=198425">download</a>&nbsp 
-						-->
-						<a href="https://github.com/r03ert0/CoactivationMap.app">download</a>&nbsp 
-						<a href="https://sourceforge.net/project/screenshots.php?group_id=198425">screenshots</a>&nbsp 
-						<a href="http://coactivationmap.wiki.sourceforge.net/">wiki</a>&nbsp 
-						<a href="https://sourceforge.net/forum/?group_id=198425">forum</a>&nbsp 
-						<a href="contact.html">contact</a>&nbsp 
-					</div>
-					<br>
-					<br>
-					<br>
-					<div style="text-align: center;">
-						<img alt="gui_small" src="gui_small.png" style="width: 300px; height: 345px;">
-					</div>
-					<br>
-					<br>
-					<br>
-					<div style="text-align: justify;">
-Understanding the structure of the interactions
-among different brain regions is fundamental to
-understand brain function. <span style="font-weight: bold;">Coactivation Map</span> lets
-you browse through a complete map of functional
-connections in the human brain derived by an
-automatic meta-analysis of more than 800
-neuroimaging articles in the <a href="http://neurosynth.org">NeuroSynth</a> database.
-					</div>
-					<br>
-<a href="https://github.com/r03ert0/CoactivationMap.app">Download</a> the application*,
-click on the image, or use the left slides to select
-a seed voxel. Then, see which brain regions are
-frequently engaged together with the seed voxel by
-using the right slides, or simply clicking on the image.
-					<br>
-					<br>
-<div style="text-align: right;color: rgb(102, 102, 102);">
-	<small>* MacOS X 10.6 or superior, 2GB of HD</small>
-</div>
-<br>
-<br>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<br>
-<br>
-<br>
-<br>
-<div style="text-align: center;color: rgb(102, 102, 102);">
-	<small>
-	last update 14 june 2007, roberto toro<br>
-	brain & body centre | university of nottingham | nottingham, UK
-	</small>
+	<footer>
+		<p>This project is maintained by <a href="http://neuroanatomy.github.io"><img src="../naat.svg" style="width:3em;height:3em" align="middle"/></a></p>
+	</footer>
 </div>
 
-</span>
 </body>
 </html>
