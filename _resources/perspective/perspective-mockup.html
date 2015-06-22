@@ -1,0 +1,141 @@
+<html>
+<head>
+<style>
+/*Custom Font*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+
+/*Basic Reset*/
+* {margin: 0; padding: 0;}
+
+body {
+	background: #333;
+	/*Removing scrollers*/
+	overflow: hidden;
+	/*A high perspective to give the UL an isometric look*/
+	perspective: 3000;
+}
+.grid {
+	position: absolute; top: 100px; left: 0;
+	/*Width = (264 + 20 + 20) * 4 = 1060*/
+	width: 1520px;
+	/*3D Transform*/
+	/*transform: rotateX(50deg) rotateZ(-20deg);*/
+	/*Preserve 3D style for children*/
+	transform-style: preserve-3d;
+}
+.one {
+	transform:rotateZ(0deg);
+}
+.grid {
+	left:12em;
+}
+.grid li {
+	height: 400px; width: 264px;
+	float: left; margin: -30px;
+	list-style-type: none;
+	background-size: 0, cover;
+	transform-style: preserve-3d;
+}
+/*Left and Bottom Sides*/
+.grid li:before, .grid li:after {
+	content: '';
+	position: absolute;
+	/*100% height and width*/
+	top: 0; left: 0; right: 0; bottom: 0;
+	background: inherit;
+	background-size: cover;
+}
+/*Left Side*/
+.grid li:before {
+	transform-origin: left center;
+	transform: rotateY(90deg);
+	/*Reducing the width of the left side for a flat feel*/
+	width: 5px;
+}
+/*Bottom Side*/
+.grid li:after {
+	transform-origin: bottom center;
+	transform: rotateX(90deg);
+	/*Reducing the height*/
+	height: 5px; top: auto; bottom: 0;
+	/*Background fix - start the background from the bottom*/
+	background-position: bottom center;
+}
+/*Shadow time - sadly all pseudo elements are used so we will have to add an HTML element in each LI*/
+.s {
+	position: absolute;
+	/*30px smaller from each side*/
+	top: 30px; left: 30px; right: 30px; bottom: 30px;
+	background: rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.7);
+	/*Pushing down the shadow to give an elevated feel*/
+}
+
+.one {
+	transform:rotateX(50deg) rotateZ(-25deg) translateZ(0px);
+}
+.one .s {
+	transform:translateZ(-20px);
+}
+.two {
+	transform:rotateX(50deg) rotateZ(-25deg) translateZ(20px);
+}
+.two .s {
+	transform:translateZ(-20px);
+}
+.three {
+	transform:rotateX(50deg) rotateZ(-25deg) translateZ(40px);
+}
+.three .s {
+	transform:translateZ(-20px);
+}
+.four {
+	transform:rotateX(50deg) rotateZ(-25deg) translateZ(60px);
+}
+.four .s {
+	transform:translateZ(-20px);
+}
+.five {
+	transform:rotateX(50deg) rotateZ(-25deg) translateZ(80px);
+}
+.five .s {
+	transform:translateZ(-20px);
+}
+
+/*We will add a light gradient to the sides to give some lighting effect*/
+.one {
+	background: 
+		linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+		url("pic1.png");
+}
+.two {
+	background: 
+		linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+		url("pic2.png");
+}
+.three {
+	background: 
+		linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+		url("pic3.png");
+}
+.four {
+	background: 
+		linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+		url("pic4.png");
+}
+.five {
+	background: 
+		linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+		url("pic5.png");
+}
+</style>
+</head>
+<body>
+<ul class="grid">
+	<li class="one"><span class="s"></span></li>
+	<li class="two"><span class="s"></span></li>
+	<li class="three"><span class="s"></span></li>
+	<li class="four"><span class="s"></span></li>
+	<li class="five"><span class="s"></span></li>
+</ul>
+</body>
