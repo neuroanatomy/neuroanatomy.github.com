@@ -1480,7 +1480,7 @@ switch(args.model) {
 		param=RingBorder;
 		break;
 	case "Sphere":
-		param=Sphere;
+		param=SphereSurface;
 		break;
 }
 initRender();
