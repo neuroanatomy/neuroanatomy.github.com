@@ -1,68 +1,79 @@
 <html>
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<title>Growth by NAAT</title>
-
-<link rel="stylesheet" href="../css/app-style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<!--[if lt IE 9]>
-<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<style>
-	.frame {
-	border:thin solid #ddd;
-	padding:0.5em;
-	box-shadow: 0 0.3em 0.3em 0 rgba(0, 0, 0, 0.5);
-	background-color:#f5f5f5;
-	}
-</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>Growth by NAAT</title>
+	<link rel="stylesheet" href="../css/app-style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<style>
+		.frame {
+		border:thin solid #ddd;
+		padding:0.5em;
+		box-shadow: 0 0.3em 0.3em 0 rgba(0, 0, 0, 0.5);
+		background-color:#f5f5f5;
+		}
+		div.try {
+			width:100%;
+			text-align:center;
+		}
+		img.try {
+			display:block;
+			width:300px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+	</style>
 </head>
 
 <body>
-<div class="wrapper">
-	<header>
-		<div style="display: inline-block">
-			<img src="buckling.jpg" style="width:300px" />
-		</div>
-		<br />
-		<br />
-		<h1>Mechanical morphogenesis</h1>
-		<p>Interactive simulations of growth in hyperelastic materials, written in JavaScript</p>
-		<p class="view"><a href="https://github.com/neuroanatomy/growth">View the Project on GitHub <small>neuroanatomy/growth</small></a></p>
-		<ul>
-			<li><a href="https://github.com/neuroanatomy/growth/zipball/master">Download <strong>ZIP File</strong></a></li>
-			<li><a href="https://github.com/neuroanatomy/growth/tarball/master">Download <strong>TAR Ball</strong></a></li>
-			<li><a href="https://github.com/neuroanatomy/growth">View On <strong>GitHub</strong></a></li>
-		</ul>
-	</header>
+	<div class="wrapper">
+		<header>
+			<h1>Mechanical morphogenesis</h1>
+			<p>Interactive simulations of growth in hyperelastic materials, written in JavaScript</p>
+			<p class="view"><a href="https://github.com/neuroanatomy/growth">View the Project on GitHub <small>neuroanatomy/growth</small></a></p>
+			<ul>
+				<li><a href="https://github.com/neuroanatomy/growth/zipball/master">Download <strong>ZIP File</strong></a></li>
+				<li><a href="https://github.com/neuroanatomy/growth/tarball/master">Download <strong>TAR Ball</strong></a></li>
+				<li><a href="https://github.com/neuroanatomy/growth">View On <strong>GitHub</strong></a></li>
+			</ul>
+		</header>
 
-	<section>
-		<p>The development and evolution of complex neocortical organisations is thought to result from the interaction of genetic and activity-dependent processes. But a third type of process – mechanical morphogenesis – may also play an important role. Homogeneous growth of elastic tissues can induce a rich variety of forms (including folding), with heterogeneous patterns of residual stress.
-		<p>
-		<p>Here we provide an intuitive introduction to the physics of buckling using interactive, open source implementations of different mechanical systems. The simulations run directly on the web browsers, without any other software.
+		<section>
+			<p>The development and evolution of complex neocortical organisations is thought to result from the interaction of genetic and activity-dependent processes. But a third type of process – mechanical morphogenesis – may also play an important role. Homogeneous growth of elastic tissues can induce a rich variety of forms (including folding), with heterogeneous patterns of residual stress.
+			<p>
+			<p>Here we provide an intuitive introduction to the physics of buckling using interactive, open source implementations of different mechanical systems. The simulations run directly on the web browsers, without any other software.
 	
-		<h3><a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hyperelastic materials</h3>
-		<p>Deformation is computed relative to a resting configuration, and stress is derived from an elastic energy function.
+			<h3><a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hyperelastic materials</h3>
+			<p>Deformation is computed relative to a resting configuration, and stress is derived from an elastic energy function.
 	
-		<h3><a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Residual stress</h3>
-		<p>Growth is modelled as a local change in the rest configuration. The new rest configuration is not necessarily compatible with the continuity of the tissue, which translates into gradients of residual stress.
+			<h3><a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Residual stress</h3>
+			<p>Growth is modelled as a local change in the rest configuration. The new rest configuration is not necessarily compatible with the continuity of the tissue, which translates into gradients of residual stress.
+			<div class="try">
+				<img class="try" src="residual.jpg" />
+				<p><a href="growth.html?model=residual"><h2>Try it!</h2></a></p>
+			</div>
 		
-		<h3><a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Buckling</h3>
-		<p>In certain cases, growth may lead to buckling instabilities, and then, to non-linear changes in geometry, such as folding, wrinkling and creasing.
+			<h3><a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Buckling</h3>
+			<p>In certain cases, growth may lead to buckling instabilities, and then, to non-linear changes in geometry, such as folding, wrinkling and creasing.
+			<div class="try">
+				<img class="try" src="buckling.jpg" />
+				<p><a href="growth.html?model=buckling"><h2>Try it!</h2></a></p>
+			</div>
 	
-		<h3><a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-		<p>Roberto Toro (<a href="https://github.com/r03ert0" class="user-mention">@r03ert0</a>) and Ophélie Foubet.
+			<h3><a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+			<p>Roberto Toro (<a href="https://github.com/r03ert0" class="user-mention">@r03ert0</a>) and Ophélie Foubet.
 
-		<h3><a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h3>
-		<p>Foubet O and Toro R (2015) Mechanical morphogenesis and the development of neocortical organisation. BioRxiv, doi: xxxx
-	</section>
+			<h3><a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h3>
+			<p>Foubet O and Toro R (2015) Mechanical morphogenesis and the development of neocortical organisation. BioRxiv, doi: <a href="http://dx.doi.org/10.1101/021311">http://dx.doi.org/10.1101/021311</a>
+		</section>
 
-	<footer>
-		<p>This project is maintained by <a href="http://neuroanatomy.github.io"><img src="../naat.svg" style="width:3em;height:3em" align="middle"/></a></p>
-	</footer>
-</div>
-
+		<footer>
+			<p>This project is maintained by <a href="http://neuroanatomy.github.io"><img src="../naat.svg" style="width:3em;height:3em" align="middle"/></a></p>
+		</footer>
+	</div>
 </body>
 </html>
