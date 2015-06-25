@@ -1479,6 +1479,9 @@ switch(args.model) {
 	case "RingBorder":
 		param=RingBorder;
 		break;
+	case "Sphere":
+		param=Sphere;
+		break;
 }
 initRender();
 animate();
