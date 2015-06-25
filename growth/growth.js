@@ -1324,18 +1324,19 @@ function initSimulation(param) {
 		for(i=0;i<np;i++)
 			color.push(new THREE.Color(0xffffff));
 
-		//material=new THREE.MeshNormalMaterial({color:'blue',wireframe:false});
-		material=new THREE.MeshBasicMaterial({wireframe:false,linewidth:0.001,shading:THREE.FlatShading,vertexColors:THREE.FaceColors});
-		//material=new THREE.MeshBasicMaterial({wireframe:false,linewidth:0.001,shading:THREE.SmoothShading,vertexColors:THREE.FaceColors});
-		/*
-		material = new THREE.ShaderMaterial({
-			//vertexShader: "varying vec3 vnormal;varying vec3 vpos;void main(){vnormal=normal;vpos=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
-			//fragmentShader: "varying vec3 vnormal;varying vec3 vpos;void main(){vec3 n=normalize(vec3(1,1,1)+vnormal);float g;g=mod(vpos.x,0.1)/0.1;if(g>0.5) g=1.0;else g=0.0;g=g*mod(vpos.z+6.0,12.0)/12.0;gl_FragColor=vec4(g,g,g,1);}",
-			vertexShader: "varying vec3 vPos;varying vec3 vColor;void main(){vPos=position;vColor=color;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
-			fragmentShader: "varying vec3 vPos;varying vec3 vColor;void main(){vec3 c=vColor;float g=floor(c.x*32.0)/32.0;if(vPos.y<0.0) discard;if(mod(vPos.x,0.5)/0.5<0.05 || mod(vPos.y,0.5)/0.5<0.05) g=g;gl_FragColor=vec4(g,g,g,1);}",
-			vertexColors: THREE.VertexColors
-		});
-		*/
+		if(args.model=="Sphere") {
+			material = new THREE.ShaderMaterial({
+				//vertexShader: "varying vec3 vnormal;varying vec3 vpos;void main(){vnormal=normal;vpos=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+				//fragmentShader: "varying vec3 vnormal;varying vec3 vpos;void main(){vec3 n=normalize(vec3(1,1,1)+vnormal);float g;g=mod(vpos.x,0.1)/0.1;if(g>0.5) g=1.0;else g=0.0;g=g*mod(vpos.z+6.0,12.0)/12.0;gl_FragColor=vec4(g,g,g,1);}",
+				vertexShader: "varying vec3 vPos;varying vec3 vColor;void main(){vPos=position;vColor=color;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+				fragmentShader: "varying vec3 vPos;varying vec3 vColor;void main(){vec3 c=vColor;float g=floor(c.x*32.0)/32.0;if(vPos.y<0.0) discard;if(mod(vPos.x,0.5)/0.5<0.05 || mod(vPos.y,0.5)/0.5<0.05) g=g;gl_FragColor=vec4(g,g,g,1);}",
+				vertexColors: THREE.VertexColors
+			});
+		} else {
+			//material=new THREE.MeshNormalMaterial({color:'blue',wireframe:false});
+			material=new THREE.MeshBasicMaterial({wireframe:false,linewidth:0.001,shading:THREE.FlatShading,vertexColors:THREE.FaceColors});
+			//material=new THREE.MeshBasicMaterial({wireframe:false,linewidth:0.001,shading:THREE.SmoothShading,vertexColors:THREE.FaceColors});
+		}
 		
 		if(mesh!=null)
 			scene.remove(mesh);
