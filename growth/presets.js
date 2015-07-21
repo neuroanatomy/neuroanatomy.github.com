@@ -40,18 +40,18 @@ var RingTangential=new Object({
 	// mechanics
 	gamma:0.1,
 	rho:0.0001,					 // mass density
-	mu:5,						 // shear modulus
+	mu:10,						 // shear modulus
 	K:50,						 // bulk modulus
 	
 	// growth
 	growth:"ring tangential instantaneous",
-	G:2,						// growth factor
+	G:2.0,						// growth factor
 	T:0.0,						 // duration of growth (in sec)
 
 	// display
 	colormap:"deformation",
-	wireframe:false,
-	perspective:true	// set to false for orthographic perspective
+	wireframe:true,
+	perspective:false	// set to false for orthographic perspective
 });
 
 /* Model 3: Sphere, Surface growth */
