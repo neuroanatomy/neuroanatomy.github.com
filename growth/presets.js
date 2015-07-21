@@ -40,7 +40,7 @@ var RingTangential=new Object({
 	// mechanics
 	gamma:0.1,
 	rho:0.0001,					 // mass density
-	mu:10,						 // shear modulus
+	mu:50,						 // shear modulus
 	K:50,						 // bulk modulus
 	
 	// growth
@@ -49,7 +49,7 @@ var RingTangential=new Object({
 	T:0.0,						 // duration of growth (in sec)
 
 	// display
-	colormap:"deformation",
+	colormap:"normal",
 	wireframe:true,
 	perspective:false	// set to false for orthographic perspective
 });
