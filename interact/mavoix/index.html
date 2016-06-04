@@ -1,0 +1,154 @@
+<html>
+<head>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<style>
+	* {
+		font-size: 1.1rem;
+		font-family: sans-serif;
+		outline:none;
+	}
+	html,body {
+		margin: 0;
+		width:100%;
+		height:100%;
+	}
+	#tabs button {
+		border:0;
+		height:40px;
+		margin:0;
+		padding:0 10px;
+		border-radius:10px 10px 0 0;
+		border:2px solid white;
+		border-bottom:none;
+	}
+	#content {
+		height:calc( 100% - 40px ); /* 40px the tab buttons*/
+	}
+	.collection {
+		height:calc( 100% - 220px ); /* 220px is the voice zone height */
+	}
+	
+	#collections {
+		width:100%;
+	}
+
+	#voice {
+		background-color:#90a78a;
+		display:inline-block;
+		width:100%;
+		height:220px; /* 220px is the height of an action plus margin*/
+	}
+
+	#library, #show-lib {
+		background-color:#6089a1;
+	}
+	#library {
+		height:100%;
+	}
+	
+	#statistics, #show-stats {
+		background-color:#82d2ce;
+		height:100%;
+	}
+	#statistics {
+		min-height:100px;
+	}
+	
+	#action-template {
+		display:none;
+	}
+	.action {
+		width:200px;
+		height:200px;
+		background-color:lightBlue;
+		margin:10px;
+		display:inline-block;
+		position:relative;
+		vertical-align:top;
+		box-shadow:2px 2px 5px #777;
+	}
+	span.name {
+		position:absolute;
+		top:100%;
+		left:50%;
+		/*margin-left:-50%;*/
+		transform: translate(-50%,-100%);
+		text-align:center;
+		width:100%;
+		background-color:rgba(255,255,255,0.7);
+		z-index:10;
+	}
+	.pressed {
+		background-color:#ddd !important;
+	}
+
+	#library .add-col {
+		display:inline;
+	}
+	#library .del-col {
+		display:none;
+	}
+	#library .del-lib {
+		display:inline;
+	}
+	#library .edit-lib {
+		display:inline;
+	}
+	
+	.collection .add-col, #voice .add-col {
+		display:none;
+	}
+	.collection .del-col, #voice .del-col {
+		display:inline;
+	}
+	.collection .del-lib, #voice .del-lib {
+		display:none;
+	}
+	.collection .edit-lib, #voice .edit-lib {
+		display:none;
+	}
+	img {
+		position:absolute;
+		top:0px;
+		left:0px;
+		width:100%;
+	}
+</style>
+</head>
+<body>
+
+<div id="tabs"></div>
+
+<div id="content">
+
+	<div id="collections">
+		<div id="voice" ondrop="drop(event)" ondragover="dragOver(event)" ondragleave="dragLeave(event)">
+			<div style="position:absolute;right:0;display:inline-block;width:100px;padding:10px;">
+				<button id="play" style="width:80px;height:80px;margin:10px">Play</button>
+				<br/>
+				<button id="clear" style="width:80px;height:80px;margin:10px">Clear</button>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<div id="action-template" class="action">
+	<span class="name"></span>
+	<img />
+</div>
+
+
+<script>
+/*
+$("body").append('<button id="clear">Clear</button>');
+$("#clear").click(function() {
+	myvoice={library:[],collection:[],log:[],state:{showLibrary:false,showCollection:[],showStatistics:false}};
+});
+*/
+</script>
+
+<script src="mavoix.js"></script>
+
+</body>
+</html>

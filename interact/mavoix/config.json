@@ -1,0 +1,38 @@
+{
+	"defaults":{
+		"collection":"cid1",
+		"width":"200px"
+	},
+	"collections":[
+		{
+			"name":"Jeux",
+			"cid":"cid0",
+			"color":{"red":255,"green":220,"blue":220},
+			"images":[
+				{"id":"allumer","name":"allumer"},
+				{"id":"balançoire","name":"balançoire"},
+				{"id":"ballon","name":"ballon"}
+			]
+		},
+		{
+			"name":"Nourriture",
+			"cid":"cid1",
+			"color":{"red":220,"green":255,"blue":220},
+			"images":[
+				{"id":"baudruche","name":"baudruche"},
+				{"id":"blanc","name":"blanc"},
+				{"id":"bleu","name":"bleu"}
+			]
+		},
+		{
+			"name":"Actions",
+			"cid":"cid2",
+			"color":{"red":220,"green":220,"blue":255},
+			"images":[
+				{"id":"boire","name":"Faire semblant de boire"},
+				{"id":"bonbon","name":"bonbon"},
+				{"id":"bulles","name":"bulles"}
+			]
+		}
+	]
+}
