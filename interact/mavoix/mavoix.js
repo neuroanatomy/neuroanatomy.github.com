@@ -77,6 +77,7 @@ $("#play").click(function() {
 		//utterance.voice=speech.getVoices()[5]; //51
 		
 		utterance.voice = speech.getVoices().filter(function(voice) { return voice.name == 'Amelie'; })[0];
+		console.log(utterance.voice);
 
 		speech.speak(utterance);
 
