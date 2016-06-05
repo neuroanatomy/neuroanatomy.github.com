@@ -74,11 +74,8 @@ $("#play").click(function() {
 		.animate({width:"200px",height:"200px",marginLeft:"+=5px",marginTop:"+=5px"},"fast");
 		
 		var utterance=new SpeechSynthesisUtterance($(arr[val]).find("span").text());
-		//utterance.voice=speech.getVoices()[5]; //51
-		
 		utterance.voice = speech.getVoices().filter(function(voice) { return voice.name == 'Amelie'; })[0];
-		console.log(utterance.voice);
-
+		console.log("utterance",utterance.voice);
 		speech.speak(utterance);
 
 		val++;		
