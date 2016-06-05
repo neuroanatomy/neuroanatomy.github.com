@@ -1,21 +1,24 @@
 <html>
 <head>
-<script src="../../js/jquery-1.11.0.min.js"></script>
-<script>
-var iosDragDropShim = { enableEnterLeave: true }
-</script>
-<script src="../../js/ios-drag-drop.js"></script>
-
+	<link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css">
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script>
+	var iosDragDropShim = { enableEnterLeave: true }
+	</script>
+	<script src="js/ios-drag-drop.js"></script>
 <style>
 	* {
 		font-size: 1.1rem;
-		font-family: sans-serif;
+		font-family: Quicksand,sans-serif;
+		font-weight: 400;
 		outline:none;
 	}
 	html,body {
 		margin: 0;
 		width:100%;
 		height:100%;
+		background-color:#BACDDE;
 	}
 	#tabs button {
 		border:0;
@@ -23,8 +26,9 @@ var iosDragDropShim = { enableEnterLeave: true }
 		margin:0;
 		padding:0 10px;
 		border-radius:10px 10px 0 0;
-		border:2px solid white;
+		border:2px solid #BACDDE;
 		border-bottom:none;
+		font-weight:700;
 	}
 	#content {
 		height:calc( 100% - 40px ); /* 40px the tab buttons*/
@@ -38,27 +42,12 @@ var iosDragDropShim = { enableEnterLeave: true }
 	}
 
 	#voice {
-		background-color:#90a78a;
+		background-color:#BACDDE;
 		display:inline-block;
 		width:100%;
 		height:220px; /* 220px is the height of an action plus margin*/
 	}
 
-	#library, #show-lib {
-		background-color:#6089a1;
-	}
-	#library {
-		height:100%;
-	}
-	
-	#statistics, #show-stats {
-		background-color:#82d2ce;
-		height:100%;
-	}
-	#statistics {
-		min-height:100px;
-	}
-	
 	#action-template {
 		display:none;
 	}
@@ -87,40 +76,69 @@ var iosDragDropShim = { enableEnterLeave: true }
 		background-color:#ddd !important;
 	}
 
-	#library .add-col {
-		display:inline;
-	}
-	#library .del-col {
-		display:none;
-	}
-	#library .del-lib {
-		display:inline;
-	}
-	#library .edit-lib {
-		display:inline;
-	}
-	
-	.collection .add-col, #voice .add-col {
-		display:none;
-	}
-	.collection .del-col, #voice .del-col {
-		display:inline;
-	}
-	.collection .del-lib, #voice .del-lib {
-		display:none;
-	}
-	.collection .edit-lib, #voice .edit-lib {
-		display:none;
-	}
 	img {
 		position:absolute;
 		top:0px;
 		left:0px;
 		width:100%;
 	}
+	#splash {
+		position:fixed;
+		top:0px;
+		left:0px;
+		width:100%;
+		height:100%;
+		color:white;
+		background-color:#BACDDE;
+		z-index:100;
+	}
+	#splash h1,b{
+		font-weight:300;
+		font-size:4rem;
+	}
+	#login {
+		/*padding:2rem;*/
+		border:thin solid white;
+		width:400px;
+		text-align:center;
+		margin-top:20%;
+		margin-left:50%;
+		transform:translate(-50%,0);
+	}
+	#tabs {
+		display:none;
+	}
+	#content {
+		display:none;
+	}
+	#play, #clear {
+		background-color:#42688A;
+		width:80px;
+		height:80px;
+		margin:10px;
+		border-radius:10px;
+	}
+	.fa-play, .fa-trash {
+		color:white;
+		margin:50% 50%;
+		transform:translate(-50%,-50%);
+		font-size:2rem;
+	}
 </style>
 </head>
 <body>
+
+<div id="splash">
+	<div id="login">
+		<h1>ma<b style="font-weight:700">voix</b></h1>
+		<p>
+		<i style='font-size:3rem;display:block;margin-bottom:10px' class='fa fa-user'></i>
+		<input id='user-name' style='color:black' type='text' />
+		<p>
+		<i style='font-size:3rem;display:block;margin-bottom:10px' class='fa fa-lock'></i>
+		<input id='user-password' style='color:black;margin-bottom:2rem' onchange='enterLogin()' type='password' />
+	</div>
+</div>
 
 <div id="tabs"></div>
 
@@ -129,9 +147,8 @@ var iosDragDropShim = { enableEnterLeave: true }
 	<div id="collections">
 		<div id="voice" ondrop="drop(event)" ondragover="dragOver(event)" ondragleave="dragLeave(event)">
 			<div style="position:absolute;right:0;display:inline-block;width:100px;padding:10px;">
-				<button id="play" style="width:80px;height:80px;margin:10px">Play</button>
-				<br/>
-				<button id="clear" style="width:80px;height:80px;margin:10px">Clear</button>
+				<div id="play"><i class="fa fa-play" aria-hidden="true"></i></div>
+				<div id="clear"><i class="fa fa-trash" aria-hidden="true"></i></div>
 			</div>
 		</div>
 	</div>

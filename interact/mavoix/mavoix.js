@@ -11,7 +11,7 @@ var myvoice={
 		selectedCollection:""
 	}
 };
-var dbroot="http://siphonophore.org/interact/php/interact.php";
+var dbroot="http://siphonophore.org/Interact/php/interact.php";
 var count=0;
 
 //startFirebug();
@@ -74,7 +74,10 @@ $("#play").click(function() {
 		.animate({width:"200px",height:"200px",marginLeft:"+=5px",marginTop:"+=5px"},"fast");
 		
 		var utterance=new SpeechSynthesisUtterance($(arr[val]).find("span").text());
-		utterance.voice=speech.getVoices()[5]; //51
+		//utterance.voice=speech.getVoices()[5]; //51
+		
+		utterance.voice = speech.getVoices().filter(function(voice) { return voice.name == 'Amelie'; })[0];
+
 		speech.speak(utterance);
 
 		val++;		
@@ -204,8 +207,6 @@ function showCollection(c) {
 	for(var i=0;i<myvoice.state.showCollection.length;i++)
 		myvoice.state.showCollection[i]=false;
 	myvoice.state.showCollection[j]=true;
-	myvoice.state.showLibrary=false;
-	myvoice.state.showStatistics=false;
 	displayInterface();
 };
 
@@ -338,7 +339,24 @@ function configure(stored) {
 	myvoice.log=stored.log;
 }
 */
-$(window).bind('load', function() {
+function enterLogin() {
+	var n=$("#user-name").val();
+	var p=$("#user-password").val();
+	
+	if(n=="demo" && p=="or die") {
+		loadUser();
+	}
+}
+
+/*$(window).bind('load', function() {*/
+function loadUser() {
+	localStorage.mavoix=JSON.stringify(new Date());
+
+	$("#splash").remove();
+	$("#tabs").show();
+	$("#content").show();
+	displayInterface();
+
 	/*
 	var stored=localStorage.getItem('myvoice');
 	if(stored!=undefined) {
@@ -351,6 +369,9 @@ $(window).bind('load', function() {
 	myvoice.state.selectedCollection=myvoice.collection[0].cid;
 	displayInterface();
 	*/
+	myvoice.state.showCollection=[];
+	myvoice.log=[];
+
 	$.getJSON("config.json",function(data) {
 		var i;
 		for(i=0;i<data.collections.length;i++) {
@@ -360,12 +381,28 @@ $(window).bind('load', function() {
 				addActionToCollection(c.images[j],c.cid);
 			}
 		}
-		
-		myvoice.state.showCollection=[];
-		myvoice.log=[];
-		
+		var cid=data.defaults.collection;
+		var j=indexOfCollection(cid);
+		myvoice.state.selectedCollection=cid;
+		for(var i=0;i<myvoice.state.showCollection.length;i++)
+			myvoice.state.showCollection[i]=false;
+		myvoice.state.showCollection[j]=true;
+		displayInterface();
 	});
-});
+}
 $(window).unload(function(){
 	localStorage.setItem('myvoice',JSON.stringify(myvoice));
 });
+
+// If last login is more recent than 2 hours, just enter
+var date_last=null;
+var date_now=new Date();
+if(localStorage.mavoix) {
+	date_last=new Date(JSON.parse(localStorage.mavoix));
+}
+if(date_last && date_now) {
+	var diff_in_hours=(date_now-date_last)/1000/60/60;
+	if(diff_in_hours<1)
+		loadUser();
+}
+

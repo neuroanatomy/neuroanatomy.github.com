@@ -1,0 +1,215 @@
+<html>
+<head>
+	<script src="js/jquery-1.11.0.min.js"></script>
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+	<link id="theme_stylesheet" rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"></link>
+    <script src='js/jsoneditor.min.js'></script>
+
+	
+	
+	<script>
+	var iosDragDropShim = { enableEnterLeave: true }
+	</script>
+	<script src="js/ios-drag-drop.js"></script>
+<style>
+	#splash {
+		position:fixed;
+		top:0px;
+		left:0px;
+		width:100%;
+		height:100%;
+		color:white;
+		background-color:#BACDDE;
+		z-index:100;
+	}
+	#splash h1,b{
+		font-weight:300;
+		font-size:4rem;
+	}
+	#login {
+		/*padding:2rem;*/
+		border:thin solid white;
+		width:400px;
+		text-align:center;
+		margin-top:20%;
+		margin-left:50%;
+		transform:translate(-50%,0);
+	}
+	.collection {
+		border:thin solid grey;
+		background-color:#f0f0fe;
+		padding:0.5rem;
+	}
+	.image {
+		background-color:#f7f7fe;
+		padding:0.5rem;
+	}
+</style>
+</head>
+<body>
+
+<div id="splash">
+	<div id="login">
+		<h1>ma<b style="font-weight:700">voix</b></h1>
+		<p>
+		<i style='font-size:3rem;display:block;margin-bottom:10px' class='fa fa-user'></i>
+		<input id='user-name' style='color:black' type='text' />
+		<p>
+		<i style='font-size:3rem;display:block;margin-bottom:10px' class='fa fa-lock'></i>
+		<input id='user-password' style='color:black;margin-bottom:2rem' onchange='enterLogin()' type='password' />
+	</div>
+</div>
+
+<div id='editor'></div>
+
+<div class="collection" id="enterCollectionTemplate" style="display:none;vertical-align:middle">
+	<input type="color" style="width:2rem;height:2rem;padding:0px;margin:0px" class="collection-color"/>
+	<i class="collection-name">Untitled Collection</i> <button class="edit-collection-name">Edit</button><br/>
+	<button onclick="addImage(this)">+image</button>
+</div>
+
+<div class="image" id="enterImageTemplate" style="display:none">
+	<img style="width:100px;height:100px;background:lightGrey" />
+	<input type="text" style="height:32px" onchange="enterImageName(this)" class="image-name" placeholder="Enter image name"/>
+	<input type="text" style="height:32px" onchange="enterImageURL(this)" class="image-url" placeholder="Enter image URL"/>
+	<button onclick="addImage($(this).parent())">+</button>
+	<button onclick="removeImage($(this).parent())">-</button>
+</div>
+
+<script>
+function enterImageName(ob) {
+	var name=$(ob).val();
+}
+function enterImageURL(ob) {
+	var img=$(ob).siblings("img")[0];
+	$(img).attr("src",$(ob).val());
+	console.log(ob);
+}
+function addCollection(ob) {
+	var enterCollection=$("#enterCollectionTemplate").clone();
+	enterCollection.removeAttr("id","enterCollectionTemplate");
+	$("body").append(enterCollection);
+	enterCollection.show();
+	
+	if(ob) {
+		enterCollection.find(".collection-name").text(ob.name);
+		enterCollection.find(".collection-color").val("#"+ob.color.red.toString(16)+ob.color.green.toString(16)+ob.color.blue.toString(16));
+	}
+}
+function addImage(ob) {
+	var enterImage=$("#enterImageTemplate").clone();
+	enterImage.removeAttr("id","enterImageTemplate");
+	$(ob).parent().append(enterImage);
+	enterImage.show();
+}
+
+function enterLogin() {
+	var n=$("#user-name").val();
+	var p=$("#user-password").val();
+	
+	if(n=="demo" && p=="or die") {
+		loadUser();
+	}
+}
+function loadUser() {
+	localStorage.mavoix=JSON.stringify(new Date());
+
+	$("#splash").remove();
+
+	$.getJSON("config.json",function(data) {
+		var i;
+		for(i=0;i<data.collections.length;i++) {
+			addCollection(data.collections[i]);
+		}
+	});
+}
+function configure_schema() {
+    var schema={
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		title: "Classeur",
+		type: "object",
+		properties: {
+			collections: {
+				title: "Collections",
+				type: "array",
+				items: {
+					title: "Collection",
+					headerTemplate: "{{ i1 }} - {{ self.name }}",
+					type: "object",
+					properties: {
+						cid: {type: "string"},
+						name: {type: "string"}, 
+						color: {
+							type: "string",
+							format:"color"
+						}, 
+						images: {
+							title:"Images",
+							type: "array",
+							format:"table",
+							items: {
+								title:"Image",
+								type: "object",
+								properties: {
+									id: {type: "string"}, 
+									name: {type: "string"},
+									url: {type: "string",format:"url"}
+								},
+								required: ["id",  "name"]
+							},
+							uniqueItems: true
+						},
+					},
+					required: ["cid"]
+				}
+			}
+		}
+	};
+	
+    // Set options from direct link
+	JSONEditor.defaults.options.theme = 'bootstrap2';
+	JSONEditor.defaults.options.iconlib = 'bootstrap2';
+    JSONEditor.defaults.options.object_layout = 'normal';
+    JSONEditor.defaults.options.show_errors ='interaction';
+	JSONEditor.defaults.options['required_by_default']=false;
+	JSONEditor.defaults.options['no_additional_properties']=true;
+	JSONEditor.defaults.options['ajax']=false;
+	JSONEditor.defaults.options['disable_edit_json']=false;
+	JSONEditor.defaults.options['disable_collapse']=true;
+	JSONEditor.defaults.options['disable_properties']=true;
+	JSONEditor.defaults.options['disable_array_add']=false;
+	JSONEditor.defaults.options['disable_array_reorder']=false;
+	JSONEditor.defaults.options['disable_array_delete']=false;
+	JSONEditor.defaults.options['disable_array_delete_all_rows']=false;
+	JSONEditor.defaults.options['disable_array_delete_last_row']=true;
+	
+    // Divs/textareas on the page
+    //var $editor = document.getElementById('editor');    
+	//var jsoneditor = new JSONEditor($editor,{schema: schema});
+	
+	$("body").append("user: demo");
+	
+	var addCollectionButton=$("<button>");
+	addCollectionButton.html("+ collection");
+	addCollectionButton.css({display:"block"});
+	addCollectionButton.click(addCollection);
+	$("body").append(addCollectionButton);
+}
+// If last login is more recent than 2 hours, just enter
+var date_last=null;
+var date_now=new Date();
+if(localStorage.mavoix) {
+	date_last=new Date(JSON.parse(localStorage.mavoix));
+}
+if(date_last && date_now) {
+	var diff_in_hours=(date_now-date_last)/1000/60/60;
+	if(diff_in_hours<1)
+		loadUser();
+}
+
+</script>
+</body>
+</html>
