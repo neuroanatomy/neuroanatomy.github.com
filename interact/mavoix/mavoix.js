@@ -75,7 +75,6 @@ $("#play").click(function() {
 		
 		var utterance=new SpeechSynthesisUtterance($(arr[val]).find("span").text());
 		utterance.voice = speech.getVoices().filter(function(voice) { return voice.name == 'Amelie'; })[0];
-		console.log("utterance",utterance.voice);
 		speech.speak(utterance);
 
 		val++;		
