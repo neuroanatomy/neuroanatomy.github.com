@@ -48,6 +48,24 @@
 		color:#777;
 		margin-right:2rem;
 	}
+	.button {
+		display:inline-block;
+		background:#eee;
+		border-radius:10px;
+		padding:5px 10px;
+		font-size:14px;
+		height:18px;
+		vertical-align:middle;
+	}
+	.button:hover {
+		background:#ddd;
+	}
+	.button.selected {
+		background:#bbb
+	}
+	#content {
+		margin-bottom:100px;
+	}
 	</style>
 </head>
 
@@ -81,6 +99,15 @@
 		systemizing, two major cognitive functions of the human brain.
 		</p>
 		
+		<div style="vertical-align:middle">
+			<div class="button selected" data-path="empathy-10k.txt.gz">Empathy</div>
+			<div class="button" data-path="empathyF-10k.txt.gz">Empathy &#9792;</div>
+			<div class="button" data-path="empathyM-10k.txt.gz">Empathy &#9794;</div>
+			<div class="button" data-path="systemizing-10k.txt.gz">Systemizing</div>
+			<div class="button" data-path="systemizingF-10k.txt.gz">Systemizing &#9792;</div>
+			<div class="button" data-path="systemizingM-10k.txt.gz">Systemizing &#9794;</div>
+		</div>
+		
 		<div class="c1"><span class="c2"> chromosome 1</span> <svg id="chr1"></svg></div>
 		<div class="c1"><span class="c2"> chromosome 2</span> <svg id="chr2"></svg></div>
 		<div class="c1"><span class="c2"> chromosome 3</span> <svg id="chr3"></svg></div>
@@ -103,8 +130,10 @@
 		<div class="c1"><span class="c2"> chromosome 20</span> <svg id="chr20"></svg></div>
 		<div class="c1"><span class="c2"> chromosome 21</span> <svg id="chr21"></svg></div>
 		<div class="c1"><span class="c2"> chromosome 22</span> <svg id="chr22"></svg></div>
+		<!--
 		<div class="c1"><span class="c2"> chromosome X</span> <svg id="chrX"></svg></div>
 		<div class="c1"><span class="c2"> chromosome Y</span> <svg id="chrY"></svg></div>
+		-->
 	</div>
 </div>
 
@@ -123,7 +152,7 @@
 <script type="text/javascript" src="js/lib/jquery-2.0.2.min.js"></script>
 <script type="text/javascript" src="js/lib/pako/pako_inflate.min.js"></script>
 <script>
-var nchr=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,"X","Y"];
+var nchr=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];//,"X","Y"];
 var i;
 var rs;
 var	pmin=-1,pmax;
@@ -253,114 +282,75 @@ function color(val) {
 	return '#'+x(parseInt(r))+x(parseInt(g))+x(parseInt(b));
 }
 
+// Draw allele significance for gwas
+function drawGWAS(path) {
+	$("circle").remove();
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', path, true);
+	xhr.responseType = 'arraybuffer';
+	xhr.onload = function(e) {if (this.status == 200) {
+		var data=pako.inflate(new Uint8Array(this.response),{to:'string'});
+
+		var i;
+		rs=data.split("\n");
+		for(i=0;i<rs.length;i++) {
+			rs[i]=rs[i].split("\t");
+			rs[i][2]=parseInt(rs[i][2]);
+			rs[i][3]=parseFloat(rs[i][3]);
+			if(rs[i][1]=="1") {
+				if(pmin==-1) {
+					pmin=rs[i][3];
+					pmax=rs[i][3];
+				}
+				if(rs[i][3]<pmin) pmin=rs[i][3];
+				if(rs[i][3]>pmax) pmax=rs[i][3];
+			}
+		}
+	
+		for(i=rs.length-1;i>=0;i--) {
+			if(rs[i][1]) {
+				var ch="chr"+rs[i][1];
+				var w=(G[ch][G[ch].length-2]-G[ch][0])/chrLength[ch];
+				var re=makeSVG('circle',{cx:rs[i][2]*w,cy:oy-rs[i][3]*5,r:3,fill:color((rs[i][3]-pmin)/(pmax-pmin)),"fill-opacity":0.5,id:"rs"+i,class:"rs"});
+				$("#"+ch).append(re);
+			}
+		}
+	}};
+	xhr.send();
+}
+
+// connect GWAS button actions
+$(".button").click(function() {
+	$(".button").removeClass("selected");
+	$(this).addClass("selected");
+	drawGWAS("data/"+$(this).attr('data-path'));
+});
+
+// connect SNP dot actions
+$("body").on('click','.rs',function() {
+	var o=$(this).offset();
+	$("#info").show();
+	$("#info").css({top:o.top,left:o.left});
+	var i=$(this).attr('id').split("s")[1];
+	$("#info #rs").html("RefSeq: "+rs[i][0]);
+	$("#info #bp").html("Base Pair: "+rs[i][2]);
+	$("#info #p").html("P-value: 10<sup>-"+rs[i][3]+"</sup>");
+	$("#info #rank").html("Rank: "+i);
+	$("#link").attr('href',"http://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg19&position=chr"+rs[i][1]+"%3A"+(rs[i][2]-1000)+"-"+(rs[i][2]+1000)+"&hgsid=216670668");
+});
+$("#info").mouseleave(function() {
+	setTimeout(function(){$("#info").hide();},500);
+});
+
+
 // Draw chromosomes
 for(i=0;i<nchr.length;i++)
 	drawchr("chr"+nchr[i]);
 
-// Draw allele significance
-var xhr = new XMLHttpRequest();
-xhr.open('GET', "data/empathy-10k.txt.gz", true);
-xhr.responseType = 'arraybuffer';
-xhr.onload = function(e) {if (this.status == 200) {
+// Draw GWAS
+drawGWAS("data/empathy-10k.txt.gz");
 
-	/*
-	var inflate=new pako.Inflate();
-	inflate.push(new Uint8Array(this.response),true);
-	var data=inflate.result.buffer;
-	*/
-	var data=pako.inflate(new Uint8Array(this.response),{to:'string'});
-
-	var i;
-	rs=data.split("\n");
-	for(i=0;i<rs.length;i++) {
-		rs[i]=rs[i].split("\t");
-		rs[i][2]=parseInt(rs[i][2]);
-		rs[i][3]=parseFloat(rs[i][3]);
-		if(rs[i][1]=="1") {
-			if(pmin==-1) {
-				pmin=rs[i][3];
-				pmax=rs[i][3];
-			}
-			if(rs[i][3]<pmin) pmin=rs[i][3];
-			if(rs[i][3]>pmax) pmax=rs[i][3];
-		}
-	}
-	
-	for(i=rs.length-1;i>=0;i--) {
-		if(rs[i][1]) {
-			var ch="chr"+rs[i][1];
-			var w=(G[ch][G[ch].length-2]-G[ch][0])/chrLength[ch];
-			var re=makeSVG('circle',{cx:rs[i][2]*w,cy:oy-rs[i][3]*5,r:3,fill:color((rs[i][3]-pmin)/(pmax-pmin)),"fill-opacity":0.5,id:"rs"+i,class:"rs"});
-			$("#"+ch).append(re);
-		}
-	}
-
-	$(".rs").click(function() {
-		var o=$(this).offset();
-		$("#info").show();
-		$("#info").css({top:o.top,left:o.left});
-		var i=$(this).attr('id').split("s")[1];
-		$("#info #rs").html("RefSeq: "+rs[i][0]);
-		$("#info #bp").html("Base Pair: "+rs[i][2]);
-		$("#info #p").html("P-value: 10<sup>-"+rs[i][3]+"</sup>");
-		$("#info #rank").html("Rank: "+i);
-		$("#link").attr('href',"http://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg19&position=chr"+rs[i][1]+"%3A"+(rs[i][2]-1000)+"-"+(rs[i][2]+1000)+"&hgsid=216670668");
-	});
-	$("#info").mouseleave(function() {
-		setTimeout(function(){$("#info").hide();},500);
-	});
-
-}};
-
-xhr.send();
-
-/*
-$.get("data/empathy-10k.txt.gz",function(zip) {
-	var inflate=new pako.Inflate();
-	inflate.push(zip,true);
-	var data=inflate.result.buffer;
-
-	var i;
-	rs=data.split("\n");
-	for(i=0;i<rs.length;i++) {
-		rs[i]=rs[i].split("\t");
-		rs[i][2]=parseInt(rs[i][2]);
-		rs[i][3]=parseFloat(rs[i][3]);
-		if(rs[i][1]=="1") {
-			if(pmin==-1) {
-				pmin=rs[i][3];
-				pmax=rs[i][3];
-			}
-			if(rs[i][3]<pmin) pmin=rs[i][3];
-			if(rs[i][3]>pmax) pmax=rs[i][3];
-		}
-	}
-	
-	for(i=rs.length-1;i>=0;i--) {
-		if(rs[i][1]) {
-			var ch="chr"+rs[i][1];
-			var w=(G[ch][G[ch].length-2]-G[ch][0])/chrLength[ch];
-			var re=makeSVG('circle',{cx:rs[i][2]*w,cy:oy-rs[i][3]*5,r:3,fill:color((rs[i][3]-pmin)/(pmax-pmin)),"fill-opacity":0.5,id:"rs"+i,class:"rs"});
-			$("#"+ch).append(re);
-		}
-	}
-
-	$(".rs").click(function() {
-		var o=$(this).offset();
-		$("#info").show();
-		$("#info").css({top:o.top,left:o.left});
-		var i=$(this).attr('id').split("s")[1];
-		$("#info #rs").html("RefSeq: "+rs[i][0]);
-		$("#info #bp").html("Base Pair: "+rs[i][2]);
-		$("#info #p").html("P-value: 10<sup>-"+rs[i][3]+"</sup>");
-		$("#info #rank").html("Rank: "+i);
-		$("#link").attr('href',"http://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg19&position=chr"+rs[i][1]+"%3A"+(rs[i][2]-1000)+"-"+(rs[i][2]+1000)+"&hgsid=216670668");
-	});
-	$("#info").mouseleave(function() {
-		setTimeout(function(){$("#info").hide();},500);
-	});
-});
-*/
 </script>
 
 </body>
