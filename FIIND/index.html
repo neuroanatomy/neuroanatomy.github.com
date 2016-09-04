@@ -4,7 +4,7 @@
 <title>Neuroanatomy</title>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,700,700italic' rel='stylesheet' type='text/css'>
 <link href='../css/base.css' rel='stylesheet' type='text/css'>
-<script src="js/jquery-1.11.0.min.js"></script>
+<script src="../js/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 <div class="row" style="width:100%;height:100%">
@@ -35,12 +35,204 @@
 		<a href="../news.html">News</a>
 	</div>
 
-	FIIND	
+	<div style="width:100%;border:1px solid #777;position:relative">
+		<div style="width:100%;height:15em;overflow:hidden;background-color:black">
+			<img id="mainImage" src="img/pli.jpg" style="width:100%"/>
+		</div>
+		<!--
+		<div id="mainImageDescription" style="color:white;position:absolute;top:1em;right:1em;text-align:right;background-color:rgba(0,0,0,0.4);padding:0.25em">
+			<b>Project FIIND</b>
+			<p>Ferret Interactive Integrated Neuro Development Atlas
+		</div>
+		-->
+        <img style="width:128px;position:absolute;right:0;bottom:0;padding:10px;" src="img/fiind-1.svg"/>
+	</div>
+	
+    <style>
+        span {
+            padding: 1em;
+        }
+        .selected {
+            padding-bottom:11px;
+            border-bottom:2px solid black;
+        }
+        td {
+            padding: 16px;
+            vertical-align: top;
+        }
+    </style>
+    <div style="padding-top:1.5em;text-align:center">
+        <span class="selected" data-section="about">About</span>
+        <span data-section="people">People</span>
+        <span data-section="news">News</span>
+    </div>
+	<div style="border-bottom:1px solid #aaa;width:100%;height:0;margin-top:0.5em">
+	</div>
+
+    <div id="about" class="section" style="margin:0 auto;max-width:50em;padding-top:2em">
+        <p> Project FIIND is an international effort to create the most detailed description of the
+    development of the ferret brain. The first days after birth in ferrets provide a
+    unique view of the development of a complex brain. Unlike mice, ferrets
+    develop a rich pattern of deep neocortical folds and cortico-cortical connections. Unlike
+    humans and other primates, whose brains are well differentiated and folded at birth,
+    ferrets are born with a very immature and completely smooth neocortex: folds, neocortical
+    regionalisation and cortico-cortical connectivity develop in ferrets during the first
+    days after birth. After a period of fast neocortical expansion, during which brain volume
+    increases by up to a factor of 4 in 2 weeks, the ferret brain reaches its adult volume at
+    about 6 weeks of age.</p>
+
+        <br/>
+        <strong> The ferret: an exceptional animal model for neuroimaging</strong>
+        <p> Ferrets appear as an exceptional animal model to investigate the neurobiological
+    correlates of the phenomena observed in human neuroimaging. Many of these phenomena, such
+    as the relationship between brain folding, cortico-cortical connectivity and neocortical
+    regionalisation cannot be investigated in mice, but could be investigated in ferrets.</p>
+        <div style="text-align:center;padding:1em">
+            <img src="img/ferret-p0-p16.jpg"></img>
+        </div>
+        <br/>
+        <strong> An open science project</strong>
+        <p> We are constituting an open, collaborative atlas of ferret brain development,
+    integrating multi-modal and multi-scale data. We are acquiring data from many animals,
+    from newborns to adults, using high-resolution MRI, diffusion weighted imaging (DWI) and
+    high-throughput histology. Brains will be sectioned at 25 μm and scanned at 0.25 μm of
+    resolution, and processed for real-time multi-scale
+    visualisation. We are building a web-platform to integrate an interactive
+    multi-scale visualisation of the data. Using our combined expertise in computational
+    neuroanatomy, multi-modal neuroimaging, neuroinformatics, and the development of
+    inter-species atlases, we are building an open-source web platform to allow the
+    collaborative, online, creation of atlases of the development of the ferret brain. The web
+    platform will allow researchers to access and visualise interactively the MRI and
+    histology data. It will also allow researchers to create collaborative, human curated, 3D
+    segmentations of brain structures, as well as vectorial atlases. Our work should provide a
+    first integrated atlas of ferret brain development, and the basis for an open platform for
+    the creation of collaborative multi-modal, multi-scale, multi-species atlases.</p>
+        <div style="text-align:center;padding:1em">
+            <img src="img/atlasmaker.jpg"></img>
+        </div>
+    </div>
+    
+    <div id="people" class="section" style="display:none;margin:0 auto;max-width:50em;padding-top:2em">
+        <table>
+            <tr><td>
+                <img src="img/logo-pasteur.svg" style="width:100px"/>
+            </td><td>
+                <strong>Groupe de neuroanatomie appliquée et théorique, Institut Pasteur, France</strong>
+                <p><strong>Roberto Toro (P.I.)</strong> is leader of the group of applied and theoretical
+                neuroanatomy at the unit of human genetics and cognitive function,
+                department of neuroscience of the Institut Pasteur. After a degree in
+                engineering, he obtained a Master and a PhD in Neuroscience at the
+                University of Paris 6, France. He is interested on the development and
+                evolution of the brain, which he studies through mathematical modelling,
+                magnetic resonance imaging and genomics.</p>
+            </td></tr>
+            <tr><td>
+                <img src="img/logo-radboud.svg" style="width:100px"/>
+            </td><td>
+                <strong>Radboud University Nijmegen, The Netherlands</strong>
+                <p><strong>Paul Tiesinga</strong> is professor of Neuroinformatics and chair
+                of the department of Neuroinformatics. He has a master in Theoretical
+                Physics and a PhD in physics from Utrecht University. He was a postdoc in
+                the physics department at Northeastern University
+                and a Sloan postdoctoral fellow at the Salk Institute. He was
+                associate professor in the Physics & Astronomy department at the
+                University of North Carolina in Chapel Hill.
+                Paul Tiesinga moved to the Radboud University
+                Nijmegen in 2009 to establish the Neuroinformatics department. He has
+                served as director of the Donders Centre for Neuroscience and is member of
+                the Governing Board of the International Neuroinformatics Facility (INCF).
+            </td></tr>
+            <tr><td>
+                <img src="img/logo-cea.svg" style="width:100px"/>
+            </td><td>
+                <strong>MIRCen, Commisariat aux Énergies Alternatives, France</strong>
+                <p><strong>Thierry Delzescaux</strong> has a PhD in image processing, and is researcher at
+                the CEA. He specialises in preclinical research (experimental models),
+                image processing in neurodegenerative diseases (Alzheimer's, Parkinson's,
+                Huntington's), multimodal co-registration of in vivo (PET, MRI, CT) and
+                post mortem (histology, autoradiography, immunohistochemistry) brain
+                images, 3D reconstruction and image analysis of post mortem / ex vivo
+                data, anatomo-functional studies in rodents and primates. Thierry
+                Delzescaux is coordinator of the BrainRAT project (Brain Reconstruction
+                and Analysis Toolbox) developed by the image processing team of the MIRCen
+                and integrated into <a href="http://brainvisa.info">BrainVISA</a> software.</p>
+            </td></tr>
+            <tr><td>
+                <img src="img/logo-mcgill.svg" style="width:100px"/>
+            </td><td>
+                <strong>McGill Centre for Integrative Neuroscience, Quebec, Canada</strong>
+                <p><strong>Alan Evans</strong> was originally trained in physics at Liverpool University in
+                the U.K. After completing his PhD in biophysics he then spent 5-year at
+                Atomic Energy of Canada Ltd. in Ottawa, working on the physics and
+                biochemical analysis of positron emission tomography (PET) data. In 1984,
+                he moved to the Montreal Neurological Institute (MNI) at McGill University
+                in Montreal to continue his PET research. His research interests include
+                multi-modal brain imaging with PET and MRI, image processing and
+                large-scale brain database analysis. During his 25 years at the MNI, he
+                has held numerous leadership roles, most notably as director of the
+                McConnell Brain Imaging Centre. Alan Evans is a founding member of the
+                International Consortium for Brain Mapping and one of the founders of the
+                Organization for Human Brain Mapping, serving in numerous positions since
+                1995. In 2003 he received a prestigious Senior Scientist Award from the
+                Canadian Institutes of Health Research.</p>
+            </td></tr>
+        </table>
+    </div>
+
+    <div id="news" class="section" style="display:none;margin:0 auto;max-width:50em;padding-top:2em">
+        News
+        <p></p>
+    </div>
 
 <div style="position:fixed;bottom:1em;right:0;width:0.5em;height:2em;background-color:red"></div>
 </div>
 <div class="col sidespace"></div>
 </div>
+
+<script>
+
+/*
+    Gallery
+*/
+var gallery=[{	image:"img/pli.jpg"
+                //,description:"<b>BrainBox selected for the Open Science Prize Phase 1</b><p>Part of our Open Neuroimaging Lab Project"
+			},
+			{	image:"img/tractography.jpg"
+                //,description:"<b>BrainBox selected for the Open Science Prize Phase 1</b><p>Part of our Open Neuroimaging Lab Project"
+			}];
+var	i=0;
+$("#mainImage").attr("src",gallery[i].image);
+$("#mainImageDescription").html(gallery[i].description);
+setInterval(function() {
+	i=(i+1)%gallery.length;
+	console.log(i);
+	$("#mainImage").fadeOut(function() {
+		$("#mainImage").attr("src",gallery[i].image);
+		$("#mainImage").fadeIn(1000);
+	});
+	$("#mainImageDescription").fadeOut(function() {
+		$("#mainImageDescription").html(gallery[i].description);
+		$("#mainImageDescription").fadeIn(1000);
+	});
+},5000);
+for(i=0;i<gallery.length;i++) {
+	var img = new Image();
+	img.src = gallery[i].image;
+}
+
+/*
+    Sections
+*/
+$("span").click(function() {
+    $("span").removeClass("selected");
+    $(this).addClass("selected");
+    var s=$(this).data().section;
+    $("div.section").hide();
+    $("div#"+s).show();
+});
+
+</script>
+
 
 </body>
 </html>
