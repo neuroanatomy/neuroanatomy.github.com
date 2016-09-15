@@ -41,6 +41,121 @@ input {
     top:0;
     left:0;*/
 }
+a {
+    text-decoration: none;
+    color:black;
+}
+
+@-moz-keyframes sc-down-a {
+  0% {
+    -webkit-transform: translateY(0px) rotate(45deg);
+    -moz-transform: translateY(0px) rotate(45deg);
+    -o-transform: translateY(0px) rotate(45deg);
+    -ms-transform: translateY(0px) rotate(45deg);
+    transform: translateY(0px) rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(2px) rotate(45deg);
+    -moz-transform: translateY(2px) rotate(45deg);
+    -o-transform: translateY(2px) rotate(45deg);
+    -ms-transform: translateY(2px) rotate(45deg);
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+@-webkit-keyframes sc-down-a {
+  0% {
+    -webkit-transform: translateY(0px) rotate(45deg);
+    -moz-transform: translateY(0px) rotate(45deg);
+    -o-transform: translateY(0px) rotate(45deg);
+    -ms-transform: translateY(0px) rotate(45deg);
+    transform: translateY(0px) rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(2px) rotate(45deg);
+    -moz-transform: translateY(2px) rotate(45deg);
+    -o-transform: translateY(2px) rotate(45deg);
+    -ms-transform: translateY(2px) rotate(45deg);
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+@-o-keyframes sc-down-a {
+  0% {
+    -webkit-transform: translateY(0px) rotate(45deg);
+    -moz-transform: translateY(0px) rotate(45deg);
+    -o-transform: translateY(0px) rotate(45deg);
+    -ms-transform: translateY(0px) rotate(45deg);
+    transform: translateY(0px) rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(2px) rotate(45deg);
+    -moz-transform: translateY(2px) rotate(45deg);
+    -o-transform: translateY(2px) rotate(45deg);
+    -ms-transform: translateY(2px) rotate(45deg);
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+@keyframes sc-down-a {
+  0% {
+    -webkit-transform: translateY(0px) rotate(45deg);
+    -moz-transform: translateY(0px) rotate(45deg);
+    -o-transform: translateY(0px) rotate(45deg);
+    -ms-transform: translateY(0px) rotate(45deg);
+    transform: translateY(0px) rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(2px) rotate(45deg);
+    -moz-transform: translateY(2px) rotate(45deg);
+    -o-transform: translateY(2px) rotate(45deg);
+    -ms-transform: translateY(2px) rotate(45deg);
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+.btn-scroll-down {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
+  -webkit-transition: display 0.5s easy-in-out;
+  -moz-transition: display 0.5s easy-in-out;
+  -o-transition: display 0.5s easy-in-out;
+  -ms-transition: display 0.5s easy-in-out;
+  transition: display 0.5s easy-in-out;
+}
+.btn-scroll-down:before,
+.btn-scroll-down:after {
+  content: '';
+  display: block;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.btn-scroll-down:before {
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
+}
+.btn-scroll-down:after {
+  width: 30px;
+  height: 30px;
+  bottom: 35px;
+  -webkit-animation: sc-down-a 0.3s infinite alternate;
+  -moz-animation: sc-down-a 0.3s infinite alternate;
+  -o-animation: sc-down-a 0.3s infinite alternate;
+  -ms-animation: sc-down-a 0.3s infinite alternate;
+  animation: sc-down-a 0.3s infinite alternate;
+}
 </style>
 <script src="../../js/jquery-1.11.0.min.js"></script>
 </head>
@@ -48,20 +163,6 @@ input {
 <div class="row" style="width:100%;height:100%">
 <div class="col sidespace"></div>
 <div class="col">
-
-<!--
-	<a href="index.html" style="text-decoration:none">
-		<div class="row">
-			<div class="col" style="vertical-align:middle">
-				<img src="naat.svg" style="width:3em;height:3em"/>
-			</div>
-			<div class="col" style="vertical-align:middle;padding-left:1em;color:#555">
-				neuroanatomy<br>
-				applied & theoretical
-			</div>
-		</div>
-	</a>
--->
 
 	<div style="width:100%;position:relative">
 		<div id="imageContainer" style="width:100%;height:40em;overflow:hidden;background-color:black">
@@ -71,6 +172,7 @@ input {
 			<b style="font-family:Lobster;font-size:4rem">Brainhack: Anatomy</b>
 			<p style="font-family:Roboto;font-size:1.5rem">Institut Pasteur de Paris, 24 to 26 October 2016</p>
 		</div>
+        <span class="btn-scroll-down scroll"></span>
 	</div>
 	
 	<div class="slide">
@@ -87,7 +189,7 @@ input {
         <div class="mainText">
             <p>Participant will be supervised and receive advice on methods from a team of very capable nerds including Roberto Toro, Michel Thiebaut de Schotten, Alexandros Goulas, Daniel Margulies and Leonardo Cerliani throughout the three days.
     
-            <p>Unlimited food and drinks (and especially coffee…) will be provided during the conference breaks.
+            <p>A constant flow of food and drinks (especially coffee…) will be provided during the conference breaks.
 
             <p>We kindly request an online preregistration (70€) in order to cover the expenses for the venue, the equipment and the food/drinks.
         </div>
@@ -137,20 +239,27 @@ input {
         <tr>
             <td class="subtitle"><h2>Registration</h2></td>
             <td>
-            <p>Registration is 70€ and includes all meals plus a continuous supply of healthy snacks, club mate, hot beverages including particularly coffee.
+            <p>Registration is 70€ and includes all meals plus a continuous supply of healthy snacks, club mate, hot beverages (particularly coffee).
 
             <p><strong>Contact information</strong>
-            <table style="color:white">
+            <table style="color:white;line-height:0.5rem">
                 <tr><td style="padding:1rem">Name</td><td><input type="text"></input></td></tr>
                 <tr><td style="padding:1rem">E-Mail</td><td><input type="email"></input></td></tr>
+                <tr><td style="padding:1rem">Institution</td><td><input type="text"></input></td></tr>
             </table>
+            
+            <a href="/">
+            <div style="border:thin solid grey;background-color:#eee;display:inline-block;padding:4px 80px;border-radius:32px;line-height:0rem">
+                <p style="vertical-align:middle;color:black;font-family:sans-serif;font-size:20px"><strong>Register</strong>
+            </div>
+            </a>
 
             </td>
         </tr>
         <tr>
             <td class="subtitle"><h2>Payment</h2></td>
             <td>
-            <p>Pay your inscription using PayPal
+            <p>Pay your inscription securely using PayPal
             <div id="accept_paypal_payment_form">
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="wp_accept_pp_button_form_classic">
                     <input type="hidden" name="cmd" value="_xclick">
@@ -162,11 +271,9 @@ input {
                     <input type="hidden" name="no_note" value="1">
                     <input type="hidden" name="bn" value="TipsandTricks_SP">
                     <input type="hidden" name="return" value="neuroanatomy.github.io/events/brainhack">
-                    <!--
-                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif" name="submit" alt="Make payments with payPal - it's fast, free and secure!">
-                    -->
-                    <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypalcheckout-60px.png" name="submit" alt="Make payments with payPal - it's fast, free and secure!">
-                    
+                    <input height="48px" type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypalcheckout-60px.png" name="submit" alt="Make payments with payPal - it's fast, free and secure!">
+                    </input>
+
                 </form>
             </div>
             </td>
@@ -186,14 +293,20 @@ input {
         <div class="mainText" style="font-size:1rem;line-height:2rem;text-align:center">
             
             <h2>Make sure to join our slack channel <a href="https://brainhack-slack-invite.herokuapp.com/">#brain-anat-hack</a></h2>
+            <a href="https://brainhack-slack-invite.herokuapp.com/">
             <div style="border:thin solid grey;display:inline-block;padding:16px;border-radius:16px">
                 <p style="vertical-align:middle"><strong>Click here for an automatic invitation</strong>
-                <a href="https://brainhack-slack-invite.herokuapp.com/"><img style="vertical-align:middle" width="128px" src="img/slack.svg" /></a>
+                <img style="vertical-align:middle" width="128px" src="img/slack.svg" />
             </div>
+            </a>
             
-            <h2>We use Brainhack's slack to discuss potential projects and people are getting organised to share accommodation!</h2>
-            
+            <h2>We use Brainhack's slack to meet other participants, discuss potential projects and people are also getting organised to share accommodations!</h2>
         </div>
+        <a href="http://neuroanatomy.github.io">
+        <div style="position:absolute;bottom:10px;margin:0 auto;text-align:center;width:100%">
+            <img src="img/naat-bw.svg" style="width:30px;vertical-align:middle"/><span style="font-size:16px;padding-left:10px">groupe de neuroanatomie appliquée et théorique</span>
+        </div>
+        </a>
     </div>
 
 <script>
