@@ -2,16 +2,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Brainhack:Anatomy</title>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,700,700italic' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
 <!--
 <link href='../../css/base.css' rel='stylesheet' type='text/css'>
 -->
 <style>
-html, body {
+html, body, table {
     margin:0;
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
     font-size:1.2rem;
     line-height:2rem;
 }
@@ -25,6 +24,22 @@ html, body {
     width:800px;
     margin-left:50%;
     transform: translate(-400px,-50%);
+}
+td.subtitle {
+    vertical-align:top;
+    text-align:right;
+    padding-right:2rem;
+}
+input {
+    font-size:1.2rem;
+}
+#imageContainer img {
+    width:100%;
+    filter:grayscale(90%) contrast(120%) opacity(50%);
+    -webkit-filter:grayscale(90%) contrast(120%) opacity(50%);
+    /*position:absolute;
+    top:0;
+    left:0;*/
 }
 </style>
 <script src="../../js/jquery-1.11.0.min.js"></script>
@@ -50,9 +65,9 @@ html, body {
 
 	<div style="width:100%;position:relative">
 		<div id="imageContainer" style="width:100%;height:40em;overflow:hidden;background-color:black">
-			<img id="mainImage" src="img/01/bottlenose_dolphin_mri.png" style="width:100%;filter:grayscale(90%) contrast(120%) opacity(50%);-webkit-filter:grayscale(90%) contrast(120%) opacity(50%);"/>
+			<img id="aImage"/>
 		</div>
-		<div id="mainImageDescription" style="color:white;position:absolute;top:1em;right:1em;text-align:right;padding:0.25em">
+		<div style="color:white;position:absolute;top:1em;right:1em;text-align:right;padding:0.25em">
 			<b style="font-family:Lobster;font-size:4rem">Brainhack: Anatomy</b>
 			<p style="font-family:Roboto;font-size:1.5rem">Institut Pasteur de Paris, 24 to 26 October 2016</p>
 		</div>
@@ -118,47 +133,67 @@ html, body {
 
 	<div class="slide" style="color:white;background-color:#333">
     <div class="mainText">
-        <p>DEADLINE for online registration is 16th of October.
-    
-        <p>Email brainhackparis@gmail.com if you have any questions.
-    
-        <p>Or join our slack channel #brain-anat-hack.
+        <table style="vertical-align:top;color:white">
+        <tr>
+            <td class="subtitle"><h2>Registration</h2></td>
+            <td>
+            <p>Registration is 70€ and includes all meals plus a continuous supply of healthy snacks, club mate, hot beverages including particularly coffee.
+
+            <p><strong>Contact information</strong>
+            <table style="color:white">
+                <tr><td style="padding:1rem">Name</td><td><input type="text"></input></td></tr>
+                <tr><td style="padding:1rem">E-Mail</td><td><input type="email"></input></td></tr>
+            </table>
+
+            </td>
+        </tr>
+        <tr>
+            <td class="subtitle"><h2>Payment</h2></td>
+            <td>
+            <p>Pay your inscription using PayPal
+            <div id="accept_paypal_payment_form">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="wp_accept_pp_button_form_classic">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="theneurobureau@gmail.com">
+                    <input type="hidden" name="item_name" value="Registration payment for Brainhack: Anatomy 2016">
+                    <input type="hidden" name="amount" value="70">
+                    <input type="hidden" name="currency_code" value="EUR">
+                    <input type="hidden" name="no_shipping" value="0">
+                    <input type="hidden" name="no_note" value="1">
+                    <input type="hidden" name="bn" value="TipsandTricks_SP">
+                    <input type="hidden" name="return" value="neuroanatomy.github.io/events/brainhack">
+                    <!--
+                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif" name="submit" alt="Make payments with payPal - it's fast, free and secure!">
+                    -->
+                    <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/silver-pill-paypalcheckout-60px.png" name="submit" alt="Make payments with payPal - it's fast, free and secure!">
+                    
+                </form>
+            </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="subtitle"><h2>Dead line</h2></td>
+            <td>
+            <p>Registrations will close the <b>16th of October</b>.
+            <p>E-mail brainhackparis@gmail.com if you have any questions.
+            </td>
+        </tr>
+        </table>
     </div>
     </div>
-    
- 	<div class="slide">   
-    <div class="mainText">
-        <p> Brainhack is a unique conference that convenes researchers from across the globe and a myriad of disciplines to work together on innovative projects related to neuroscience. Year after year, global Brainhack events have brought together researchers to participate in open collaboration, and regional Brainhack events keep the momentum going throughout the year.
 
-        <p>Registration
-    
-        <p>Registration is 70€, it includes all meals plus a continuous supply of healthy snacks, hot beverages and coffee.
- 
-        Contact information
-        Name (required): 
- 
-
-        Email (required): 
- 
-
-        Website (optional): 
- 
-        Would you like to submit a project?
-        Project Name: 
-
- 
-        Summary: 
-
- 
-        Project image:
-        Choose File 
-        Send 
-        Registration payment for Brainhack Paris 2016
-
-
-
-        Make payments with payPal - it's fast, free and secure!
-    </div>
+	<div class="slide">
+        <div class="mainText" style="font-size:1rem;line-height:2rem;text-align:center">
+            
+            <h2>Make sure to join our slack channel <a href="https://brainhack-slack-invite.herokuapp.com/">#brain-anat-hack</a></h2>
+            <div style="border:thin solid grey;display:inline-block;padding:16px;border-radius:16px">
+                <p style="vertical-align:middle"><strong>Click here for an automatic invitation</strong>
+                <a href="https://brainhack-slack-invite.herokuapp.com/"><img style="vertical-align:middle" width="128px" src="img/slack.svg" /></a>
+            </div>
+            
+            <h2>We use Brainhack's slack to discuss potential projects and people are getting organised to share accommodation!</h2>
+            
+        </div>
     </div>
 
 <script>
@@ -189,16 +224,15 @@ var gallery=[{image:"img/a.jpg"},
     {image:"img/t.jpg"},
     {image:"img/u.jpg"}
 ];
-var	i=0;
-$("#mainImage").attr("src",gallery[i].image);
-$("#mainImageDescription").html(gallery[i].description);
+var	a=Math.floor(Math.random()*gallery.length);
+
+$("#aImage").attr("src",gallery[a].image);
 
 setInterval(function() {
-	i=Math.floor(Math.random()*gallery.length);
-	console.log(i);
-	$("#mainImage").fadeOut(2000,function() {
-		$("#mainImage").attr("src",gallery[i].image);
-		$("#mainImage").fadeIn(2000);
+	a=Math.floor(Math.random()*gallery.length);
+	$("#aImage").fadeOut(2000,function() {
+		$("#aImage").attr("src",gallery[a].image);
+		$("#aImage").fadeIn(2000);
 	});
 },6000);
 
