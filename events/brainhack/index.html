@@ -243,16 +243,14 @@ a {
 
             <p><strong>Contact information</strong>
             <table style="color:white;line-height:0.5rem">
-                <tr><td style="padding:1rem">Name</td><td><input type="text"></input></td></tr>
-                <tr><td style="padding:1rem">E-Mail</td><td><input type="email"></input></td></tr>
-                <tr><td style="padding:1rem">Institution</td><td><input type="text"></input></td></tr>
+                <tr><td style="padding:1rem">Name</td><td><input type="text" id="reg-name"></input></td></tr>
+                <tr><td style="padding:1rem">E-Mail</td><td><input type="email" id="reg-email"></input></td></tr>
+                <tr><td style="padding:1rem">Institution</td><td><input type="text" id="reg-institution"></input></td></tr>
             </table>
             
-            <a href="/">
-            <div style="border:thin solid grey;background-color:#eee;display:inline-block;padding:4px 80px;border-radius:32px;line-height:0rem">
+            <div id="register" style="cursor:pointer;border:thin solid grey;background-color:#eee;display:inline-block;padding:4px 80px;border-radius:32px;line-height:0rem">
                 <p style="vertical-align:middle;color:black;font-family:sans-serif;font-size:20px"><strong>Register</strong>
             </div>
-            </a>
 
             </td>
         </tr>
@@ -353,6 +351,17 @@ for(i=0;i<gallery.length;i++) {
 	var img = new Image();
 	img.src = gallery[i].image;
 }
+
+$("#register").click(function() {
+    $.get("http://braincatalogue.org/php/email.php",{
+        name:$("#reg-name").val(),
+        email:$("#reg-email").val(),
+        inst:$("#reg-institution").val()
+    })
+    .done(function(data) {
+        $("#register strong").text("Done!");
+    });
+});
 
 </script>
 
