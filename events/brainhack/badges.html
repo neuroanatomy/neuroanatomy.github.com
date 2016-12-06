@@ -1,0 +1,104 @@
+<html>
+<meta charset="utf-8">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	<style>
+	div {
+		position:relative;
+		border: thin solid lightGrey;
+		width:240px;
+		height:120px;
+		display:inline-block;
+		padding:30px;
+		font-family: sans-serif;
+		font-size:1rem;
+		vertical-align:top;
+		text-align:center;
+		overflow:hidden;
+	}
+	img {
+		position:absolute;
+		top:0px;
+		left:0px;
+		width:100%;
+        filter:grayscale(50%) contrast(120%) opacity(30%);
+        -webkit-filter:grayscale(50%) contrast(120%) opacity(30%);
+        z-index:-1;
+	}
+	h2 {
+		margin:0px;
+	}
+	h3 {
+		font-size:0.9rem;
+		margin:10px;
+	}
+	</style>
+</head>
+
+<body width="600px">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+var p=[
+"Albena Vassileva",
+"Anastasia Osoianu",
+"Anna Plachti",
+"Celine Delettre",
+"Charl Linssen",
+"Chris Foulon",
+"Cristina Hoffmann",
+"Daniel Margulies",
+"Ernst Schwartz",
+"Florence Bouhali",
+"Georg Langs",
+"Hannah Spitzer",
+"Ignacio Rebollo",
+"João Loula",
+"Julia Huntenburg",
+"Julien Lefevre",
+"Katja Heuer",
+"Konrad Wagstyl",
+"Leonardo Cerliani",
+"Linda Zhang",
+"Michel Thiebaut de Schotten",
+"Nicolas Traut",
+"Niels Reuter",
+"Ophelie Foubet",
+"Orlin S. Todorov",
+"Patrizia Chiesa",
+"Rembrandt Bakker",
+"Richard Bethlehem",
+"Roberto Toro",
+"Sabine Oligschläger",
+"Sebastien Treguer",
+"Stephanie Forkel",
+"Yann Leprince"
+];
+
+$("body").html("<table>");
+for(var i=0;i<p.length;i+=2) {
+	var str="";
+	str+=[
+		"<tr><td><div>",
+		"<img src='img/l.jpg'/>",
+		"<b style='font-family:Lobster;font-size:1.6rem;float:right;margin:-25px -15px'>Brainhack: Anatomy</b>",
+		"<br/><br/></br/>",
+		"<h2>",p[i],"</h2>",
+		"<h3>24&ndash;26 Octobre 2016</h3>",
+		"</div></td>"
+	].join(" ");
+	str+=[
+		"<td><div>",
+		"<img src='img/l.jpg'/>",
+		"<b style='font-family:Lobster;font-size:1.6rem;float:right;margin:-25px -15px'>Brainhack: Anatomy</b>",
+		"<br/><br/></br/>",
+		"<h2>",p[i+1],"</h2>",
+		"<h3>24&ndash;26 Octobre 2016</h3>",
+		"</div></td></tr>"
+	].join(" ");
+	$("body").append(str);
+}
+$("body").append("</table>");
+</script>
+</body>
+</html>
