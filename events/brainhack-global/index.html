@@ -192,7 +192,11 @@ a {
         </div>
     </div>
     
- 
+    <div class="slide" style="color:white;background-color:#111">
+        <div class="mainText">
+            <p><b>Special Guest:</b> Gesine Marwedel
+    </div>
+    
 	<div class="slide">
         <div class="mainText" style="font-size:1rem;line-height:1.1rem">
             <pre>
@@ -363,7 +367,7 @@ for(i=0;i<gallery.length;i++) {
 }
 
 $("#register").click(function() {
-    $.get("http://braincatalogue.org/php/email.php",{
+    $.get("https://braincatalogue.org/php/email.php",{
         name:$("#reg-name").val(),
         email:$("#reg-email").val(),
         inst:$("#reg-institution").val()
