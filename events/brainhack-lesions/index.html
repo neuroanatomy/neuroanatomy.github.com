@@ -1,0 +1,408 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Brainhack: Lesions</title>
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+<!--
+<link href='../../css/base.css' rel='stylesheet' type='text/css'>
+-->
+<style>
+html, body, table {
+    margin:0;
+    font-family: Roboto, sans-serif;
+    font-size:1.2rem;
+    line-height:2rem;
+}
+.slide {
+    width:100%;
+    height:60rem;
+    position:relative;
+}
+.mainText {
+    position:absolute;
+    width:800px;
+    margin-left:50%;
+    transform: translate(-400px,-50%);
+}
+td.subtitle {
+    vertical-align:top;
+    text-align:left;
+    padding-right:4rem;
+}
+input {
+    font-size:1.2rem;
+}
+#imageContainer img {
+    width:100%;
+    filter:grayscale(90%) contrast(120%) opacity(50%);
+    -webkit-filter:grayscale(90%) contrast(120%) opacity(50%);
+    /*position:absolute;
+    top:0;
+    left:0;*/
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+
+@-moz-keyframes sc-down-a {
+  0% {
+    -webkit-transform: translateY(0px) rotate(45deg);
+    -moz-transform: translateY(0px) rotate(45deg);
+    -o-transform: translateY(0px) rotate(45deg);
+    -ms-transform: translateY(0px) rotate(45deg);
+    transform: translateY(0px) rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(2px) rotate(45deg);
+    -moz-transform: translateY(2px) rotate(45deg);
+    -o-transform: translateY(2px) rotate(45deg);
+    -ms-transform: translateY(2px) rotate(45deg);
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+@-webkit-keyframes sc-down-a {
+  0% {
+    -webkit-transform: translateY(0px) rotate(45deg);
+    -moz-transform: translateY(0px) rotate(45deg);
+    -o-transform: translateY(0px) rotate(45deg);
+    -ms-transform: translateY(0px) rotate(45deg);
+    transform: translateY(0px) rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(2px) rotate(45deg);
+    -moz-transform: translateY(2px) rotate(45deg);
+    -o-transform: translateY(2px) rotate(45deg);
+    -ms-transform: translateY(2px) rotate(45deg);
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+@-o-keyframes sc-down-a {
+  0% {
+    -webkit-transform: translateY(0px) rotate(45deg);
+    -moz-transform: translateY(0px) rotate(45deg);
+    -o-transform: translateY(0px) rotate(45deg);
+    -ms-transform: translateY(0px) rotate(45deg);
+    transform: translateY(0px) rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(2px) rotate(45deg);
+    -moz-transform: translateY(2px) rotate(45deg);
+    -o-transform: translateY(2px) rotate(45deg);
+    -ms-transform: translateY(2px) rotate(45deg);
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+@keyframes sc-down-a {
+  0% {
+    -webkit-transform: translateY(0px) rotate(45deg);
+    -moz-transform: translateY(0px) rotate(45deg);
+    -o-transform: translateY(0px) rotate(45deg);
+    -ms-transform: translateY(0px) rotate(45deg);
+    transform: translateY(0px) rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(2px) rotate(45deg);
+    -moz-transform: translateY(2px) rotate(45deg);
+    -o-transform: translateY(2px) rotate(45deg);
+    -ms-transform: translateY(2px) rotate(45deg);
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+.btn-scroll-down {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
+  -webkit-transition: display 0.5s easy-in-out;
+  -moz-transition: display 0.5s easy-in-out;
+  -o-transition: display 0.5s easy-in-out;
+  -ms-transition: display 0.5s easy-in-out;
+  transition: display 0.5s easy-in-out;
+}
+.btn-scroll-down:before,
+.btn-scroll-down:after {
+  content: '';
+  display: block;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.btn-scroll-down:before {
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
+}
+.btn-scroll-down:after {
+  width: 30px;
+  height: 30px;
+  bottom: 35px;
+  -webkit-animation: sc-down-a 0.3s infinite alternate;
+  -moz-animation: sc-down-a 0.3s infinite alternate;
+  -o-animation: sc-down-a 0.3s infinite alternate;
+  -ms-animation: sc-down-a 0.3s infinite alternate;
+  animation: sc-down-a 0.3s infinite alternate;
+}
+</style>
+<script src="../../js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<div class="row" style="width:100%;height:100%">
+<div class="col sidespace"></div>
+<div class="col">
+
+	<div style="width:100%;position:relative">
+		<div id="imageContainer" style="width:100%;height:40em;overflow:hidden;background-color:black">
+			<img id="aImage"/>
+		</div>
+		<div style="color:white;position:absolute;top:1em;right:1em;text-align:right;padding:0.25em">
+			<b style="font-family:Lobster;font-size:4rem">Brainhack: Lesions</b>
+			<p style="font-family:Roboto;font-size:1.5rem">Mozilla Lab Paris, 9 and 10 May 2017</p>
+		</div>
+        <span class="btn-scroll-down scroll"></span>
+	</div>
+	
+	<div class="slide" style="color:black;background-color:#FFF">
+        <div class="mainText" style="font-weight:800;margin-left:50%;transform: translate(-50%,-50%);z-index:10">
+            <p><b>Special thanks</b> to the Mozilla Lab Paris who will kindly host our event. We are very happy to hold our Brainhack in a place with their philosophy:<br>
+            <p style='margin-left:50px'><i>'We’re a global pack of do-gooders, rabble-rousers and passionate defenders of the Web.'</i><br>
+<p style='margin-left:50px'><i>'We are a proudly non-profit organization driven by a culture of openness and collaboration. It’s a value we hold strong and it’s how we work together, day in and day out.'</i>
+            <p><br><br>Also huge thanks to the 'ERC Advanced Grant 694665 : CoBCoM - Computational Brain Connectivity Mapping' for financial support.
+            <br><br><br><br><br><br>
+        </div>
+		<div id="imageContainer" style="width:100%;height:56em;overflow:hidden;background-color:white">
+			<img id="gesine" src="./bg-img/mozillaLabParis.jpeg" style="opacity:0.7"/>
+		</div>
+    </div>
+
+	
+	<div class="slide" style="color:white;background-color:#333">
+        <div class="mainText" style="margin-left:40%;transform: translate(-50%,-50%)">
+			<p>Brainhack aims at promoting the interaction between scientists, developers and artists interested in the brain. Questions can evolve around
+			<ul> 
+				<li>the investigation of brain anatomy and function based on neuroimaging or post mortem dissection; 
+				<li>the evolution of nervous systems across species; 
+				<li>the variability of brain features across healthy participants; 
+				<li>the emergence of brain pathologies; 
+				<li>and there is no limit to artistic reflections in any form of art.
+			</ul>
+			<p>Participants can bring their own dataset, discuss a project and recruit a team of collaborators on site. Access to free big online databases of MRI images will be also available during the three days, for new creative ideas to be tested.
+
+			<p>This workshop integrates all levels of expertise and is also an opportunity to learn methods, develop skills and collaborate with other participants.
+			<p>Join the fun!	 
+        </div>
+        <div id="imageContainer" style="width:100%;height:48em;overflow:hidden;background-color:#111">
+			<img id="anatomyOfChange" src="./bg-img/3anatomyOfChange1.jpg" style="opacity:0.4"/>
+		</div>
+    </div>
+    
+	<div class="slide">
+        <div class="mainText" style="font-size:1rem;line-height:1.1rem;z-index:10">
+            <pre>
+            <b>PRELIMINARY PROGRAM</b>
+            <br><br>
+            <b>Tuesday 9 May 2017</b>
+            <br>
+            09:00 – 09:30   Complimentary Breakfast
+            09:30 – 09:45   Ignite Welcome lecture (Michel Thiebaut de Schotten)
+            09:45 – 10:30   Ignite Advanced Lesion Symptoms Mapping (Parashkev Nachev TBC)
+            10:30 – 12:00   Project pitches
+            12:00 – 13:30   Lunch
+            13:30 – 20:00   Open Hacking
+            20:00 – ?????   Social drink and dinner
+            <br>
+            <b>Wednesday 10 May 2017</b>
+            <br>
+            09:00 – 09:30   Breakfast
+            09:30 – 10:00   Ignite: Rehabilitation after a stroke (Marine Lunven TBC)
+            10:00 – 10:30   Ignite: Neural bases of language and motor impairment (Charlotte Rosso TBC)
+            10:30 – 12:00   Open hacking
+            12:00 – 13:00   Lunch
+            13:00 – 22:30   Open hacking
+            </pre>
+        </div>
+        <div id="imageContainer" style="width:100%;height:48em;overflow:hidden;background-color:white">
+			<img id="marie" src="./bg-img/4mariaAntoniette.jpg" style="opacity:0.9"/>
+		</div>
+    </div>
+
+	<div class="slide" style="color:white;background-color:#333">
+        <div class="mainText" style="margin-left:40%;transform: translate(-50%,-50%);z-index:10">
+            <p>Each of the three days will begin with an “Ignite Session” in which speakers will give 15 minute talks that will address wide questions that would benefit from open, interdisciplinary collaborations.
+            During the Open Hacking sessions where participants can work on their projects or participate in a dynamic set of talks organized by attendees. During the “hack sessions”, participants will be encouraged to work together in small groups on relevant projects. The workshop will culminate on the last day, when participants will have the opportunity to present a brief overview of their project. Thus far, these projects include:
+            <ul>
+            	<li>'Supervised software installation' (Katja Heuer)
+            	<li>'BCB toolkit Workshop' (Stephanie Forkel and Michel Thiebaut de Schotten)
+            	<li>'Toward a reliable tractogrphy in patients with brain lesions' (Demian Wassermann)
+				<li>'Finding a solution to correct mass effect in patients with large brain tumours' (Emmanuel Mandonnet)
+				<li>'Automatic delineation of brain lesions? why is this not working?' (Chris Foulon)
+				<li>'Using BrainBox for brain lesions: segmentation and analysis' (Roberto Toro and Katja Heuer)
+				<li>'List-other-project' (Otter Pearson)
+				<li>'Yet-another-one' (Yet Ann Otter Pearson)
+            </ul> 
+            <p>Participants will be supervised and receive advice on methods from a team of very capable nerds throughout the three days.
+        </div>
+        <div id="imageContainer" style="width:100%;height:48em;overflow:hidden;background-color:#000">
+			<img id="morbidanat" src="./bg-img/5morbidanatomy.jpg" style="opacity:0.4"/>
+		</div>
+    </div>
+    
+    <div class="slide" style="color:black;background-color:#FFF">
+        <div class="mainText" style="font-weight:100;margin-left:40%;transform: translate(-50%,-50%);z-index:10">
+            <p>A constant flow of food and drinks (especially coffee & Club Mate…) will be provided during the event.
+
+            <p>We kindly request an online preregistration (70€) in order to cover the expenses for the venue, the equipment and the food/drinks.
+            <p>Deadline is 30th of April 2017, please.
+            <!--<p>For more information and preliminary schedule visit: <a href="http://neuroanatomy.github.io/events/brainhack-global/" target="_blank">Brainhack Global: Paris</a>-->
+            <p>To learn more about Brainhack and previous events: <a href="http://brainhack.org/" target="_blank">Brainhack</a>
+        </div>
+        <div id="imageContainer" style="width:100%;height:48em;overflow:hidden;background-color:white">
+			<img id="venus" src="./bg-img/6venus.jpg" style="opacity:1.0"/>
+		</div>
+    </div>
+
+	<div class="slide" style="color:white;background-color:#333">
+		<div class="mainText" style="margin-left:60%;transform:translate(-50%,-50%);z-index:10">
+			<table style="vertical-align:top;color:white">
+			<tr>
+				<td class="subtitle"><h2>Registration</h2></td>
+				<td>
+				<p>Registration is 70€ and includes all meals plus a continuous supply of healthy snacks, club mate, hot beverages (particularly coffee).
+
+				<p><strong>Contact information</strong>
+				<table style="color:white;line-height:0.5rem">
+					<tr><td style="padding:1rem">Name</td><td><input type="text" id="reg-name"></input></td></tr>
+					<tr><td style="padding:1rem">E-Mail</td><td><input type="email" id="reg-email"></input></td></tr>
+					<tr><td style="padding:1rem">Institution</td><td><input type="text" id="reg-institution"></input></td></tr>
+				</table>
+			
+				<div id="register" style="cursor:pointer;border:thin solid grey;background-color:#eee;display:inline-block;padding:4px 80px;border-radius:32px;line-height:0rem">
+					<p style="vertical-align:middle;color:black;font-family:sans-serif;font-size:20px"><strong>Register</strong>
+				</div>
+
+				</td>
+			</tr>
+			<tr>
+				<td class="subtitle"><h2><br>Payment</h2></td>
+				<td>
+				<p><br>Pay your inscription securely using Eventbrite
+			
+				<div id="pay" style="cursor:pointer;border:thin solid grey;background-color:#eee;display:inline-block;padding:4px 80px;border-radius:32px;line-height:0rem">
+					<p style="vertical-align:middle;color:black;font-family:sans-serif;font-size:20px"><a href="https://brainhack-lesions.eventbrite.fr" target="_blank"><b>Pay</b></a>
+				</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="subtitle"><h2><br>Deadline</h2></td>
+				<td>
+				<p><br>Registrations will close the <b>30th of April 2017</b>.
+				<p>E-mail brainhackparis@gmail.com if you have any questions.
+				</td>
+			</tr>
+			</table>
+		</div>
+		<div id="imageContainer" style="width:100%;height:48em;overflow:hidden;background-color:#111">
+			<img id="regist" src="./bg-img/7register.jpg" style="opacity:0.5"/>
+		</div>
+    </div>
+
+	<div class="slide">
+        <div class="mainText" style="font-size:1rem;line-height:2rem;text-align:center;margin-left:40%;transform: translate(-50%,-50%);z-index:10">
+            
+            <h2>Make sure to join our slack channel <a href="https://brainhack-slack-invite.herokuapp.com/" target="_blank">#brainhack-lesions</a></h2>
+            <a href="https://brainhack-slack-invite.herokuapp.com/" target="_blank">
+            <div style="border:thin solid grey;display:inline-block;padding:16px;border-radius:16px">
+                <p style="vertical-align:middle"><strong>Click here for an automatic invitation</strong>
+                <img style="vertical-align:middle" width="128px" src="img/slack.svg" />
+            </div>
+            </a>
+            
+            <h2>We use Brainhack's slack to meet other participants, discuss potential projects and people are also getting organised to share accommodations!</h2>
+        </div>
+        
+        <div id="imageContainer" style="width:100%;height:48em;overflow:hidden;background-color:white">
+			<img id="vanitas" src="./bg-img/8vanitas.jpg" style="opacity:0.9"/>
+		</div>
+        
+        <a href="http://neuroanatomy.github.io">
+        <div style="position:absolute;bottom:10px;margin:0 auto;text-align:center;width:100%">
+            <img src="img/naat-bw.svg" style="width:30px;vertical-align:middle"/><span style="font-size:16px;padding-left:10px">groupe de neuroanatomie appliquée et théorique</span>
+        </div>
+        </a>
+    </div>
+</div>
+
+<script>
+
+$("#imageContainer").height($(window).height());
+$(".slide").height($(window).height());
+$(".slide .mainText").css({marginTop:$(window).height()/2});
+
+var gallery=[
+	{image:"img/a.jpg"},
+    {image:"img/b.jpg"},
+    {image:"img/c.jpg"},
+    {image:"img/d.jpg"},
+    {image:"img/e.jpg"},
+    {image:"img/f.jpg"},
+    {image:"img/g.jpg"},
+    {image:"img/h.jpg"},
+    {image:"img/i.jpg"},
+    {image:"img/j.jpg"},
+    {image:"img/k.jpg"},
+    {image:"img/l.jpg"},
+    {image:"img/m.jpg"},
+    {image:"img/n.jpg"},
+    {image:"img/o.jpg"},
+    {image:"img/p.jpg"},
+    {image:"img/q.jpg"},
+    {image:"img/r.jpg"},
+    {image:"img/s.jpg"},
+    {image:"img/t.jpg"},
+    {image:"img/u.jpg"}
+];
+var	a=Math.floor(Math.random()*gallery.length);
+
+$("#aImage").attr("src",gallery[a].image);
+
+setInterval(function() {
+	a=Math.floor(Math.random()*gallery.length);
+	$("#aImage").fadeOut(2000,function() {
+		$("#aImage").attr("src",gallery[a].image);
+		$("#aImage").fadeIn(2000);
+	});
+},6000);
+
+for(i=0;i<gallery.length;i++) {
+	var img = new Image();
+	img.src = gallery[i].image;
+}
+
+$("#register").click(function() {
+    $.get("https://braincatalogue.org/php/email.php",{
+        name:$("#reg-name").val(),
+        email:$("#reg-email").val(),
+        inst:$("#reg-institution").val()
+    })
+    .done(function(data) {
+        $("#register strong").text("Done!");
+    });
+});
+
+</script>
+
+</body>
+</html>
