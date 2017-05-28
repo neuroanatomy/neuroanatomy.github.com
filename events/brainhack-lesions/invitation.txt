@@ -1,0 +1,48 @@
+Registration is now open for Brain-hack in Paris: Global Edition
+Brainhack aims at promoting the interaction between scientists, developpers and artists interested in the brain. Questions can evolve around
+the investigation of brain anatomy and function based on magnetic resonance imaging or post mortem dissection
+the evolution of nervous systems across species
+the variability of brain features across healthy participants
+the insurgence of brain pathologies
+and there is no limit to artistic reflections in any form of art.
+Participants can bring their own dataset, discuss a project and recruit a team of collaborators on site. Access to free big online databases of MRI images will be also available during the three days, for new creative ideas to be tested.
+This workshop integrates all levels of expertise and is also an opportunity to learn methods, develop skills and collaborate with other participants.
+Join the fun!
+Program:
+Thursday 2 March 2017
+09:00 – 09:30 Complimentary Breakfast
+09:30 – 09:45 Ignite Welcome lecture (Michel Thiebaut de Schotten)
+09:45 – 10:00 Ignite Brain Connectivity (Claus Hilgetag)
+10:00 – 12:00 Project pitches
+12:00 – 13:30 Lunch
+13:30 – 20:00 Open Hacking
+20:00 – ??? Social drink and dinner
+Friday 3 March 2017
+09:00 – 09:30 Breakfast
+09:30 – 10:00 Ignite: Gender equity in neuroscience (Alexandra AUffret TBC)
+10:00 – 10:30 Ignite: The brain, as we see it in Cambridge (Lisa Ronan)
+10:30 – 12:00 Open hacking
+12:00 – 13:00 Lunch
+13:00 – 22:30 Open hacking
+Saturday 4 March 2017
+09:00 – 09:30 Breakfast
+09:30 – 10:00 Ignite: Neuroimaging Creativity (Emmanuelle Volle)
+10:00 – 10:30 Ignite: Results summary (moderator Katja Heuer)
+10:30 – 12:00 Open hacking
+12:00 – 13:00 Lunch
+13:00 – 20:00 Open Hacking
+Each of the three days will begin with an “Ignite Session” in which speakers will give 15 minute talks that will address wide questions that would benefit from open, interdisciplinary collaborations.
+The Open Hacking sessions where participants can work on their projects or participate in a dynamic set of talks organized by attendees. During the “hack sessions”, participants will be encouraged to work together in small groups on relevant projects. The workshop will culminate on the last day, when participants will have the opportunity to present a brief overview of their project. Thus far, these projects include:
+'Supervised software installation' (Katja Heuer)
+'White matter dissection workshop' (Michel, Stephy, Katerine)
+'Principles of brain evolution' (Roberto Toro)
+'Data reduction: PCA, ICA, Kmean' (Leonardo Cerliani)
+'Brain art performance: body painting' (TBC)
+'List-other-project' (Otter Pearson)
+'Yet-another-one' (Yet Ann Otter Pearson)
+Participants will be supervised and receive advice on methods from a team of very capable nerds throughout the three days.
+A constant flow of food and drinks (especially coffee & Club Mate…) will be provided during the conference breaks.
+We kindly request an online preregistration (100€) in order to cover the expenses for the venue, the equipment and the food/drinks.
+Deadline is 25th of February 2017.
+For more information and preliminary schedule visit: http://neuroanatomy.github.io/events/brainhack-global/
+To learn more about Brainhack and previous events: http://brainhack.org/
